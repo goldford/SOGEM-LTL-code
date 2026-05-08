@@ -1,0 +1,279 @@
+```{r}
+# Zooplankton Carbon Biomass Preparation and Anomaly Calculation
+# Author: Greig Oldford (2025)
+# 
+# Process:
+#
+# (1) Raw Data Transformation:
+#     - Convert zooplankton biomass from dry weight to carbon using taxon-specific factors
+#     - Aggregate into Ecospace-compatible model groups
+#     - Pivot the data to wide format retaining spatial/temporal metadata
+#     - Export raw transformed data
+#
+# (2) ICES/Perry-Style Seasonal Anomaly Computation (Central Strait of Georgia only):
+#     - Filter to 'Region' == 'Central Strait of Georgia'
+#     - Calculate seasonal mean carbon biomass per year and group
+#     - Replace true zeroes with random values (0 < x < 0.5 * min_nonzero) (see Perry et al 2021)
+#     - Apply log10 transform
+#     - Subtract seasonal climatological means (per group) to compute anomalies
+#     - Export wide-format seasonal anomaly table
+#     - Plot time series of anomalies per model group
+
+
+library(tidyverse)
+library(lubridate)
+
+# === Load Data ===
+path <- "C://Users//Greig//Sync//6. SSMSP Model//Model Greig//Data//4. Zooplankton//Zoop_Perryetal_2021//MODIFIED//"
+file <- "Zoopl_SofG_1996-2018_EN_sizeclassesseparate.csv"
+df <- read.csv(paste0(path, file))
+
+# === Carbon Conversion Factors by Model Group ===
+
+
+# DRY WEIGHT TO CARBON (see table in report)
+DW_to_C_zoop = 0.3  # default
+DW_to_C_scyphozoa = 0.07    # Ikeda, 2014b; Larson, 1987; Lüskow et al., 2021
+DW_to_C_medusae = 0.09      # Ikeda, 2014b; Larson, 1987; Lüskow et al., 2021 (guess)
+DW_to_C_ctenop = 0.13       # Ikeda, 2014b; Larson, 1987; Lüskow et al., 2021
+DW_to_C_fish = 0.42         # Uye, 1982 
+DW_to_C_lgcope = 0.4        # Ikeda et al., 2001; Nakamura et al., 2017
+DW_to_C_medsmcope = 0.29    # Ikeda et al., 2001; Nakamura et al., 2017
+DW_to_C_chaetognaths = 0.38 # Ikeda & Takahashi, 2012 
+DW_to_C_mysiids = 0.45      # Omori, 1969; Nakamura et al., 2017
+DW_to_C_amphipod = 0.43     # Ikeda, 2013
+DW_to_C_insect = 0.53       # Omori, 1969
+DW_to_C_larvacean = 0.3     # Uye, 1982; Nakamura et al., 2017
+DW_to_C_decapods = 0.36     # Lindley, 1998
+DW_to_C_euphs = 0.43        # Ikeda, 2014; Tao et al 2015
+DW_to_C_ostrac = 0.45       # Nakamura et al., 2017
+DW_to_C_siponophora = 0.05  # salp; Nakamura et ap. 2017
+DW_to_C_others = 0.35
+
+DW_to_C_ZC1_EUP = DW_to_C_euphs
+DW_to_C_ZC2_AMP = DW_to_C_amphipod
+DW_to_C_ZC3_DEC = DW_to_C_decapods
+DW_to_C_ZC4_CLG = DW_to_C_lgcope
+DW_to_C_ZC5_CSM = DW_to_C_medsmcope
+DW_to_C_ZG1_JEL = DW_to_C_scyphozoa
+DW_to_C_ZG2_CTH = (DW_to_C_ctenop + DW_to_C_siponophora) / 2
+DW_to_C_ZG3_CHA = DW_to_C_chaetognaths
+DW_to_C_ZG4_LAR = DW_to_C_larvacean
+DW_to_C_ZF1_ICH = DW_to_C_fish
+
+carbon_factors <- c(
+  "ZC1-EUP" = DW_to_C_ZC1_EUP,
+  "ZC2-AMP" = DW_to_C_ZC2_AMP,
+  "ZC3-DEC" = DW_to_C_ZC3_DEC,
+  "ZC4-CLG" = DW_to_C_ZC4_CLG,
+  "ZC5-CSM" = DW_to_C_ZC5_CSM,
+  "ZS1-JEL" = DW_to_C_ZG1_JEL,
+  "ZS2-CTH" = DW_to_C_ZG2_CTH,
+  "ZS3-CHA" = DW_to_C_ZG3_CHA,
+  "ZS4-LAR" = DW_to_C_ZG4_LAR,
+  "ZF1-ICT" = DW_to_C_ZF1_ICH,
+  "misc" = 0.4
+)
+
+# =============================
+# Calculate tow depth range (m)
+df <- df %>%
+  mutate(tow_depth_range = abs(Tow_start_depth.m.) - abs(Tow_end_depth.m.))
+
+# =============================
+# Adjust euphausiid biomass for net avoidance (factor of 3 for adults)
+# re: correspondence with I. Perry and K. Young Nov 16 2021
+netavoid_x <- 3
+
+# Apply adjustment
+df <- df %>%
+  mutate(abundance_m3 = case_when(
+    size_class == "s3" & Order == "euphausiacea" ~ Abundance.m3. * netavoid_x,
+    TRUE ~ Abundance.m3.
+  ))
+# =============================
+# Integrate biomass to g m-2 using tow depth
+df <- df %>%
+  mutate(
+    b_mg_m3_dw = abundance_m3 * Average_biomass_per_individual.mg.,
+    b_g_m2_dw = b_mg_m3_dw * tow_depth_range * 1e-3  # mg to g conversion
+  )
+
+# === Assign Model Group and Carbon Conversion ===
+df <- df %>%
+  mutate(ModelGroup = "misc") %>%
+  mutate(ModelGroup = case_when(
+    (Phylum == "Chordata" & Class != "Appendicularia") ~ "ZF1-ICT",
+    Phylum == "Cnidaria" & (Class == "Scyphozoa" | Family == "Aequoreidae") ~ "ZS1-JEL",
+    Phylum == "Ctenophora" | (Phylum == "Cnidaria" & Class == "Hydrozoa" & Family != "Aequoreidae") ~ "ZS2-CTH",
+    Phylum == "Chaetognatha" | Class %in% c("Polychaeta", "Gastropoda") ~ "ZS3-CHA",
+    Class == "Appendicularia" ~ "ZS4-LAR",
+    (Order == "Calanoida" & !Family %in% c("Calanidae", "Eucalanidae")) | Class == "Ostracoda" | Family %in% c("Oithonidae", "Maxillopoda")  ~ "ZC5-CSM",
+    Family %in% c("Calanidae", "Eucalanidae") | Order == "Poecilostomatoida" ~ "ZC4-CLG",
+    Order %in% c("Decapoda", "Thecostraca") | Family == "Corycaeidae" ~ "ZC3-DEC",
+    Order == "Amphipoda" ~ "ZC2-AMP",
+    Order == "Euphausiacea" ~ "ZC1-EUP",
+    TRUE ~ "misc"
+  )) %>%
+  mutate(CarbonConv = carbon_factors[ModelGroup],
+         BCarbon_g_m2 = b_g_m2_dw * CarbonConv,
+         Season = case_when(
+           Month %in% c(12, 1, 2) ~ "Winter",
+           Month %in% c(3, 4, 5) ~ "Spring",
+           Month %in% c(6, 7, 8) ~ "Summer",
+           Month %in% c(9, 10, 11) ~ "Fall"
+         ))
+# df <- df %>%
+#     mutate(ModelGroup = GroupCode,  # adjust to actual group column if different
+#            CarbonConv = carbon_factors[ModelGroup],
+#            BCarbon_g_m2 = b_g_m2_dw * CarbonConv,
+#            Season = case_when(
+#              Month %in% c(12, 1, 2) ~ "Winter",
+#              Month %in% c(3, 4, 5) ~ "Spring",
+#              Month %in% c(6, 7, 8) ~ "Summer",
+#              Month %in% c(9, 10, 11) ~ "Fall"
+#            ))
+
+df_summarised <- df %>%
+  group_by(
+    Index, 
+    Region, Station, Latitude.W., Longitude.N.,
+    Tow_start_depth.m., Tow_end_depth.m., Bottom_depth.m., 
+    Year, Month, Day, Time, 
+    Twilight, Season,
+    ModelGroup
+  ) %>%
+  summarise(
+    BCarbon_g_m2 = sum(BCarbon_g_m2, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+
+# === Task 1: Export Raw Carbon Biomass (Wide Format) ===
+# Note: No averaging is done in this step; each row represents a unique observation tagged with season.
+wide_raw <- df_summarised %>%
+  select(Index, 
+         Region, Station, Latitude.W., Longitude.N., 
+         Tow_start_depth.m., Tow_end_depth.m., Bottom_depth.m., 
+         Year, Month, Day, Time, 
+         Twilight, Season, 
+         ModelGroup, BCarbon_g_m2) %>%
+  pivot_wider(names_from = ModelGroup, values_from = BCarbon_g_m2)
+
+write.csv(wide_raw, paste0(path, "Zooplankton_B_C_gm2_EWEMODELGRP_Wide.csv"), row.names = FALSE)
+
+
+```
+
+```{r}
+
+# === Task 2: ICES/Perry-Style Seasonal Anomaly Calculation (CSOG only) ===
+# 2025-12-18 THIS REVISION CONSIDERED after thinking a bit about using the _df_ or 
+# _df_summarised_ in first lines
+# cross-checked original outputs - not a major difference
+
+set.seed(1)
+
+df_csog_tows <- df_summarised %>%
+  filter(Region == "Central Strait of Georgia")
+
+# seasonal mean across tows (only where group exists in a tow)
+seasonal_means <- df_csog_tows %>%
+  group_by(Year, Season, ModelGroup) %>%
+  summarise(BCarbon_g_m2 = mean(BCarbon_g_m2, na.rm = TRUE), .groups="drop")
+
+# Perry-style zero handling ONLY for true zeros that exist in the computed means
+# (this will be rare if absence is mostly missing rows)
+seasonal_means2 <- seasonal_means %>%
+  group_by(ModelGroup) %>%
+  mutate(
+    min_pos = suppressWarnings(min(BCarbon_g_m2[BCarbon_g_m2 > 0], na.rm=TRUE)),
+    min_pos = ifelse(is.infinite(min_pos), NA_real_, min_pos),
+    BCarbon_g_m2_adj = ifelse(BCarbon_g_m2 == 0 & !is.na(min_pos),
+                             runif(n(), 0, 0.5 * min_pos),
+                             BCarbon_g_m2),
+    Log10_B = log10(BCarbon_g_m2_adj)
+  ) %>%
+  ungroup() %>%
+  select(-min_pos)
+
+clim <- seasonal_means2 %>%
+  group_by(ModelGroup, Season) %>%
+  summarise(Climatology = mean(Log10_B, na.rm=TRUE), .groups="drop")
+
+seasonal_anoms <- seasonal_means2 %>%
+  left_join(clim, by=c("ModelGroup","Season")) %>%
+  mutate(SeasonalAnomaly = Log10_B - Climatology)
+
+seasonal_wide <- seasonal_anoms %>%
+  select(Year, Season, ModelGroup, SeasonalAnomaly) %>%
+  pivot_wider(names_from = ModelGroup, values_from = SeasonalAnomaly)
+
+write.csv(
+  seasonal_wide,
+  paste0(path, "Zooplankton_Carbon_SeasonalAnomalies_CSoG_Wide.csv"),
+  row.names = FALSE
+)
+
+# Visual diagnostic
+ggplot(seasonal_anoms, aes(
+  x = Year + match(Season, c("Winter", "Spring", "Summer", "Fall")) / 5,
+  y = SeasonalAnomaly,
+  color = ModelGroup
+)) +
+  geom_line() + geom_point() +
+  facet_wrap(~ModelGroup, scales = "free_y") +
+  theme_minimal() +
+  labs(
+    title = "Seasonal Carbon Biomass Anomalies - CSoG (tow-mean, Perry-style zeros)",
+    x = "Year",
+    y = "Seasonal Anomaly (log10 biomass - seasonal climatology)"
+  )
+# 
+# # === Task 2: ICES-Style Seasonal Anomaly Calculation (CSOG only) ===
+# df_csog <- df %>% filter(Region == "Central Strait of Georgia")
+# 
+# seasonal_means <- df_csog %>%
+#   group_by(Year, Season, ModelGroup) %>%
+#   summarise(BCarbon_g_m2 = mean(BCarbon_g_m2, na.rm = TRUE), .groups = "drop") %>%
+#   group_by(ModelGroup) %>%
+#   mutate(min_nonzero = min(BCarbon_g_m2[BCarbon_g_m2 > 0], na.rm = TRUE),
+#          BCarbon_g_m2 = ifelse(BCarbon_g_m2 == 0,
+#                                 runif(n(), 0, 0.5 * min_nonzero),
+#                                 BCarbon_g_m2)) %>%
+#   select(-min_nonzero) %>%
+#   ungroup() %>%
+#   mutate(Log10_BCarbon_g_m2 = log10(BCarbon_g_m2))
+# 
+# seasonal_climatology <- seasonal_means %>%
+#   group_by(ModelGroup, Season) %>%
+#   summarise(Climatology = mean(Log10_BCarbon_g_m2, na.rm = TRUE), .groups = "drop")
+# 
+# seasonal_anoms <- seasonal_means %>%
+#   left_join(seasonal_climatology, by = c("ModelGroup", "Season")) %>%
+#   mutate(SeasonalAnomaly = Log10_BCarbon_g_m2 - Climatology)
+# 
+# # Export seasonal anomalies in wide format
+# seasonal_wide <- seasonal_anoms %>%
+#   select(Year, Season, ModelGroup, SeasonalAnomaly) %>%
+#   pivot_wider(names_from = ModelGroup, values_from = SeasonalAnomaly)
+# 
+# write.csv(seasonal_wide, paste0(path, "Zooplankton_Carbon_SeasonalAnomalies_CSoG_Wide.csv"), row.names = FALSE)
+# 
+# # === Visual Diagnostic: Time Series Plot ===
+# ggplot(seasonal_anoms, aes(x = Year + match(Season, c("Winter", "Spring", "Summer", "Fall")) / 5,
+#                            y = SeasonalAnomaly, color = ModelGroup)) +
+#   geom_line() + geom_point() +
+#   facet_wrap(~ModelGroup, scales = "free_y") +
+#   theme_minimal() +
+#   labs(title = "Seasonal Carbon Biomass Anomalies - CSoG",
+#        x = "Year", y = "Seasonal Anomaly (log10 scale, demeaned)")
+# 
+# cat("Saved raw transformed biomass and seasonal anomalies (CSoG only). Diagnostic plot generated.\n")
+
+
+```
+
+
+
+

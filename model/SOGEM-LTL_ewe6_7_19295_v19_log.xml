@@ -1,0 +1,3643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <Platform>Microsoft Windows NT 10.0.26100.0</Platform>
+  <Is64BitOS>True</Is64BitOS>
+  <ModelName>SOGEM-LTL_ewe6_7_19295_v19</ModelName>
+  <Created>11:53:24 AM April 11, 2026</Created>
+<Session_Started
+  Date="11:53:24 AM April 11, 2026">
+  <Model>SOGEM-LTL_ewe6_7_19295_v19</Model>
+  <LogFile>C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19_log.xml</LogFile>
+  <Is64BitExe>True</Is64BitExe>
+  <CultureOS>English (Canada)</CultureOS>
+  <CultureUI>English (United Kingdom)</CultureUI>
+  <DecimalSeparator>.</DecimalSeparator>
+</Session_Started>
+<Information_Message
+  Date="11:53:24 AM April 11, 2026">
+  <Message>Ecopath model 'C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19.eweaccdb' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Log_Message
+  Date="11:53:30 AM April 11, 2026">
+  <Message>Unable to obtain server time</Message>
+</Log_Message>
+<Warning_Message
+  Date="11:53:37 AM April 11, 2026">
+  <Message>Catch information (Landing + Discard) is missing for one of more fleets.</Message>
+  <Message_Type>NoCatchForFleet</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>FleetInput</Message_DataType>
+</Warning_Message>
+<Warning_Message
+  Date="11:53:37 AM April 11, 2026">
+  <Message>Catch information (Landing + Discard) is missing for one of more fleets.</Message>
+  <Message_Type>NoCatchForFleet</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>FleetInput</Message_DataType>
+</Warning_Message>
+<Information_Message
+  Date="11:53:40 AM April 11, 2026">
+  <Message>Ecopath run completed.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Question_Message
+  Date="11:53:58 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC96'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:54:05 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_134'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:54:09 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC114'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:54:12 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC117'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:54:15 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC117_2'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:54:22 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC117_3'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:54:28 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC117_4'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:54:31 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC117_5'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:54:35 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC117_6'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:54:39 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC117_7'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:54:43 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC117_8'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:54:47 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC120_1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:54:53 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC120_highCOH_v'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:54:57 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC120_LowVFish'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:55:01 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC120_NoEnvTemp'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:55:05 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC120_NoEnvTempNoPAR'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:55:09 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC120_NoWind'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:55:13 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC121_1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:55:17 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC122_1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:55:24 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC122_3'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:55:28 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC122_2'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:55:32 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC122_4'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:55:36 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC122_5'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:55:40 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC122_6'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:55:46 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC122_7'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:55:50 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC122_8'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:55:54 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC123'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:55:58 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC124'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:56:02 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC125'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:56:07 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC126'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:56:11 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC128'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:56:15 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC129'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:56:18 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC130'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:56:22 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC131'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:56:29 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC132'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:56:33 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC133'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:56:36 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC133_v2'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:56:40 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC133_v3'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:56:44 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC134_28'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:56:48 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC134_28c'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:56:52 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC135'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:56:56 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC140'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:57:01 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC141'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:57:05 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC142'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:57:08 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC143'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:57:12 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC144'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:57:16 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC150_alt'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:57:20 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC200'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:57:24 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC202'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:57:28 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC203'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:57:33 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC204'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:57:37 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC205'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:57:42 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC206'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:57:46 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC207'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:57:51 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC208'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:57:55 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC209'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:57:59 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC210'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:58:03 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC211'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:58:07 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC212'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:58:11 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC213'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:58:15 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC214'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:58:19 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC215'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:58:23 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC216'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:58:27 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC217'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:58:31 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecosim_SC218'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Log_Message
+  Date="11:58:39 AM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="11:58:40 AM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="11:58:40 AM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="11:58:41 AM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Question_Message
+  Date="11:58:59 AM April 11, 2026">
+  <Message>You are about to delete scenario 'DEBUG 134'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:59:03 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC114_1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:59:07 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC114_2'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:59:12 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC117_1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:59:16 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC117_2'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:59:20 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC117_3'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:59:24 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC117_4'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:59:27 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC117_5'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:59:31 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC117_6'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:59:35 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC117_7'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:59:39 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC117_8'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:59:43 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC120_1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:59:47 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC122_1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:59:51 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC122_2'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="11:59:55 AM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC122_3'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:00 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC122_4'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:03 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC122_5'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:07 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC122_6'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:11 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC122_7'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:15 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC122_8'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:19 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:23 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_13'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:27 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_2'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:31 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_27'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:35 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_28'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:39 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_28b'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:43 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_28c'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:47 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_29'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:51 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_3'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:55 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_30'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:00:59 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_30b'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:03 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_30c'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:07 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_30d'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:11 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_9'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:15 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_n1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:19 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:22 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w10'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:26 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w11'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:30 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w12'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:34 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w14'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:39 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w15'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:42 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w16'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:45 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w17'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:49 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w18'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:52 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w19'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:55 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w2'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:01:57 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w20'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:01 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w21'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:03 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w22'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:06 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w23'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:10 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w24'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:13 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w25'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:16 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w26'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:20 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w27'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:23 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w29'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:26 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w3b'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:30 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w4'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:33 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w5'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:36 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w6'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:39 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w7'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:42 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w8'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:45 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC134_w9'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:49 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC135'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:53 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC136'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:02:57 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC136_w1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:00 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC136_w2'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:03 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC136_w3'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:07 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC136_w4'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:10 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC136_w5'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:13 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC137'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:16 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC137_w1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:19 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC138'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:22 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC138_w1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:25 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC138_w2'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:27 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC139'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:31 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC140_1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:33 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC141_1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:37 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC142'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:41 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC142_w1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:44 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC142_w2'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:47 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC142_w3'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:50 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC142_w4'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:54 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC143_1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:03:57 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC144'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:00 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC144_1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:03 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC144_w1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:06 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC200'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:09 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC201'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:11 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC202'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:16 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC203'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:19 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC204'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:22 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC205'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:25 PM April 11, 2026">
+  <Message>You are about to delete scenario 'New Ecospace scenario'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:27 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC96_1'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:30 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC206'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:34 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC207'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:38 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC208'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:41 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC209'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:44 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC210'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:47 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC211'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:50 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC212'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:53 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC213'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:56 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC214'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:04:59 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC215'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Question_Message
+  Date="12:05:02 PM April 11, 2026">
+  <Message>You are about to delete scenario 'Ecospace_SC216'. This cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Log_Message
+  Date="12:05:05 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="12:05:08 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Question_Message
+  Date="1:51:13 PM April 11, 2026">
+  <Message>Are you sure you want to delete layer 'Light I0 RDRS21'? This action cannot be undone.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Log_Message
+  Date="1:51:15 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="1:51:24 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Question_Message
+  Date="1:52:09 PM April 11, 2026">
+  <Message>Are you sure you want to delete layer 'Temp ANOM 150toBot'? This action cannot be undone.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Log_Message
+  Date="1:52:13 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="1:52:21 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Question_Message
+  Date="1:52:40 PM April 11, 2026">
+  <Message>Are you sure you want to delete layer 'Wind Stress'? This action cannot be undone.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Log_Message
+  Date="1:52:43 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="1:52:51 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Question_Message
+  Date="1:54:00 PM April 11, 2026">
+  <Message>Are you sure you want to delete layer 'Temp surface 0-4 '? This action cannot be undone.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Log_Message
+  Date="1:54:02 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="1:54:17 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Question_Message
+  Date="1:54:33 PM April 11, 2026">
+  <Message>Are you sure you want to delete layer 'PP exper'? This action cannot be undone.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Log_Message
+  Date="1:54:35 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="1:54:51 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Question_Message
+  Date="1:55:16 PM April 11, 2026">
+  <Message>Are you sure you want to delete layer 'K from salt'? This action cannot be undone.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Log_Message
+  Date="1:55:19 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="1:55:34 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Question_Message
+  Date="1:55:52 PM April 11, 2026">
+  <Message>Are you sure you want to delete layer 'mixed lyr z'? This action cannot be undone.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Log_Message
+  Date="1:55:55 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="1:56:10 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Question_Message
+  Date="1:57:14 PM April 11, 2026">
+  <Message>Are you sure you want to delete layer 'mixing lyr z turb'? This action cannot be undone.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Log_Message
+  Date="1:57:16 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="1:57:31 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Question_Message
+  Date="1:57:43 PM April 11, 2026">
+  <Message>Are you sure you want to delete layer 'Upwelling'? This action cannot be undone.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>CANCEL</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Log_Message
+  Date="1:57:47 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="1:58:02 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="2:01:08 PM April 11, 2026">
+  <Message>You are about to delete 2 forcing or mediation functions'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Log_Message
+  Date="2:01:20 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:01:20 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:01:21 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:01:22 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:01:34 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="2:01:34 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Exception_Messages
+  Date="2:02:40 PM April 11, 2026">
+  <Detail>frmEwE6 cmdNavigate OnInvoke</Detail>
+  <Exception>
+    <Type>System.ObjectDisposedException</Type>
+    <Source>System.Drawing</Source>
+    <Message>Cannot access a disposed object.
+Object name: 'Icon'.</Message>
+  </Exception>
+  <StackTrace>
+    <Method>
+      <Name>get_Handle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>UpdateWindowIcon</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>CreateHandle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>get_Handle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>set_DockPanel</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>Show</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>OnOpenDocument</Name>
+      <Line>0</Line>
+    </Method>
+  </StackTrace>
+</Exception_Messages>
+<Warning_Message
+  Date="2:03:08 PM April 11, 2026">
+  <Message>You are about to delete 15 forcing or mediation functions'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Exception_Messages
+  Date="2:03:08 PM April 11, 2026">
+  <Detail>cMessageHistory::HandleFeedbackMessage</Detail>
+  <Exception>
+    <Type>System.ObjectDisposedException</Type>
+    <Source>System.Drawing</Source>
+    <Message>Cannot access a disposed object.
+Object name: 'Icon'.</Message>
+  </Exception>
+  <StackTrace>
+    <Method>
+      <Name>get_Handle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>UpdateWindowIcon</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>CreateHandle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>get_Handle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>ShowDialog</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>Show</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>HandleFeedbackMessage</Name>
+      <Line>0</Line>
+    </Method>
+  </StackTrace>
+</Exception_Messages>
+<Warning_Message
+  Date="2:03:11 PM April 11, 2026">
+  <Message>You are about to delete 15 forcing or mediation functions'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Exception_Messages
+  Date="2:03:11 PM April 11, 2026">
+  <Detail>cMessageHistory::HandleFeedbackMessage</Detail>
+  <Exception>
+    <Type>System.ObjectDisposedException</Type>
+    <Source>System.Drawing</Source>
+    <Message>Cannot access a disposed object.
+Object name: 'Icon'.</Message>
+  </Exception>
+  <StackTrace>
+    <Method>
+      <Name>get_Handle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>UpdateWindowIcon</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>CreateHandle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>get_Handle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>ShowDialog</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>Show</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>HandleFeedbackMessage</Name>
+      <Line>0</Line>
+    </Method>
+  </StackTrace>
+</Exception_Messages>
+<Warning_Message
+  Date="2:04:09 PM April 11, 2026">
+  <Message>You are about to delete 15 forcing or mediation functions'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Exception_Messages
+  Date="2:04:09 PM April 11, 2026">
+  <Detail>cMessageHistory::HandleFeedbackMessage</Detail>
+  <Exception>
+    <Type>System.ObjectDisposedException</Type>
+    <Source>System.Drawing</Source>
+    <Message>Cannot access a disposed object.
+Object name: 'Icon'.</Message>
+  </Exception>
+  <StackTrace>
+    <Method>
+      <Name>get_Handle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>UpdateWindowIcon</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>CreateHandle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>get_Handle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>ShowDialog</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>Show</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>HandleFeedbackMessage</Name>
+      <Line>0</Line>
+    </Method>
+  </StackTrace>
+</Exception_Messages>
+<Warning_Message
+  Date="2:04:12 PM April 11, 2026">
+  <Message>You are about to delete 15 forcing or mediation functions'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Exception_Messages
+  Date="2:04:12 PM April 11, 2026">
+  <Detail>cMessageHistory::HandleFeedbackMessage</Detail>
+  <Exception>
+    <Type>System.ObjectDisposedException</Type>
+    <Source>System.Drawing</Source>
+    <Message>Cannot access a disposed object.
+Object name: 'Icon'.</Message>
+  </Exception>
+  <StackTrace>
+    <Method>
+      <Name>get_Handle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>UpdateWindowIcon</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>CreateHandle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>get_Handle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>ShowDialog</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>Show</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>HandleFeedbackMessage</Name>
+      <Line>0</Line>
+    </Method>
+  </StackTrace>
+</Exception_Messages>
+<Warning_Message
+  Date="2:04:16 PM April 11, 2026">
+  <Message>You are about to delete forcing or mediation function 'DIA Wind SC135 w2'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Exception_Messages
+  Date="2:04:16 PM April 11, 2026">
+  <Detail>cMessageHistory::HandleFeedbackMessage</Detail>
+  <Exception>
+    <Type>System.ObjectDisposedException</Type>
+    <Source>System.Drawing</Source>
+    <Message>Cannot access a disposed object.
+Object name: 'Icon'.</Message>
+  </Exception>
+  <StackTrace>
+    <Method>
+      <Name>get_Handle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>UpdateWindowIcon</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>CreateHandle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>get_Handle</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>ShowDialog</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>Show</Name>
+      <Line>0</Line>
+    </Method>
+    <Method>
+      <Name>HandleFeedbackMessage</Name>
+      <Line>0</Line>
+    </Method>
+  </StackTrace>
+</Exception_Messages>
+<Log_Message
+  Date="2:04:18 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:04:18 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:04:18 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:04:18 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:04:18 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:04:19 PM April 11, 2026">
+  <Message>Model closed</Message>
+</Log_Message>
+<Session_Started
+  Date="2:04:45 PM April 11, 2026">
+  <Model>SOGEM-LTL_ewe6_7_19295_v19</Model>
+  <LogFile>C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19_log.xml</LogFile>
+  <Is64BitExe>True</Is64BitExe>
+  <CultureOS>English (Canada)</CultureOS>
+  <CultureUI>English (United Kingdom)</CultureUI>
+  <DecimalSeparator>.</DecimalSeparator>
+</Session_Started>
+<Information_Message
+  Date="2:04:45 PM April 11, 2026">
+  <Message>Ecopath model 'C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19.eweaccdb' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="2:04:57 PM April 11, 2026">
+  <Message>Catch information (Landing + Discard) is missing for one of more fleets.</Message>
+  <Message_Type>NoCatchForFleet</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>FleetInput</Message_DataType>
+</Warning_Message>
+<Warning_Message
+  Date="2:04:57 PM April 11, 2026">
+  <Message>Catch information (Landing + Discard) is missing for one of more fleets.</Message>
+  <Message_Type>NoCatchForFleet</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>FleetInput</Message_DataType>
+</Warning_Message>
+<Information_Message
+  Date="2:04:59 PM April 11, 2026">
+  <Message>Ecopath run completed.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Log_Message
+  Date="2:05:00 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:05:00 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:05:00 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:05:02 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Warning_Message
+  Date="2:05:40 PM April 11, 2026">
+  <Message>You are about to delete 15 forcing or mediation functions'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Log_Message
+  Date="2:05:46 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:05:46 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:05:46 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:05:47 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="2:06:45 PM April 11, 2026">
+  <Message>You are about to delete 18 forcing or mediation functions'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Log_Message
+  Date="2:06:51 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:06:51 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:06:52 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:06:52 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Log_Message
+  Date="2:07:47 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:07:52 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Warning_Message
+  Date="2:08:19 PM April 11, 2026">
+  <Message>You are about to delete forcing or mediation function 'Environmental response 70'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Log_Message
+  Date="2:08:21 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:08:21 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:08:21 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:08:22 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:08:26 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="2:08:26 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="2:08:51 PM April 11, 2026">
+  <Message>You are about to delete 2 forcing or mediation functions'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Log_Message
+  Date="2:08:55 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:08:55 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:08:55 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:08:56 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:08:59 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="2:08:59 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="2:09:33 PM April 11, 2026">
+  <Message>You are about to delete 14 forcing or mediation functions'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Log_Message
+  Date="2:09:38 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:09:38 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:09:38 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:09:39 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:09:42 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="2:09:42 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Log_Message
+  Date="2:11:25 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:11:25 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:11:25 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:11:25 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:11:25 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:11:25 PM April 11, 2026">
+  <Message>Model closed</Message>
+</Log_Message>
+<Session_Started
+  Date="2:11:47 PM April 11, 2026">
+  <Model>SOGEM-LTL_ewe6_7_19295_v19</Model>
+  <LogFile>C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19_log.xml</LogFile>
+  <Is64BitExe>True</Is64BitExe>
+  <CultureOS>English (Canada)</CultureOS>
+  <CultureUI>English (United Kingdom)</CultureUI>
+  <DecimalSeparator>.</DecimalSeparator>
+</Session_Started>
+<Information_Message
+  Date="2:11:47 PM April 11, 2026">
+  <Message>Ecopath model 'C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19.eweaccdb' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="2:13:17 PM April 11, 2026">
+  <Message>Catch information (Landing + Discard) is missing for one of more fleets.</Message>
+  <Message_Type>NoCatchForFleet</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>FleetInput</Message_DataType>
+</Warning_Message>
+<Warning_Message
+  Date="2:13:17 PM April 11, 2026">
+  <Message>Catch information (Landing + Discard) is missing for one of more fleets.</Message>
+  <Message_Type>NoCatchForFleet</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>FleetInput</Message_DataType>
+</Warning_Message>
+<Information_Message
+  Date="2:13:20 PM April 11, 2026">
+  <Message>Ecopath run completed.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Log_Message
+  Date="2:13:20 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:13:20 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:13:20 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:13:21 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Log_Message
+  Date="2:13:29 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:13:33 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Warning_Message
+  Date="2:14:24 PM April 11, 2026">
+  <Message>You are about to delete 7 forcing or mediation functions'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Log_Message
+  Date="2:14:28 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:14:28 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:14:28 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:14:28 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:14:31 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="2:14:31 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="2:15:00 PM April 11, 2026">
+  <Message>You are about to delete 13 forcing or mediation functions'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Log_Message
+  Date="2:15:04 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:15:04 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:15:04 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:15:04 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:15:07 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="2:15:07 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="2:15:24 PM April 11, 2026">
+  <Message>You are about to delete 7 forcing or mediation functions'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Log_Message
+  Date="2:15:27 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:15:27 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:15:27 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:15:28 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:15:31 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="2:15:31 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="2:16:05 PM April 11, 2026">
+  <Message>You are about to delete forcing or mediation function 'ZS2-CTH SST (°C) Aglantha digitale (pink helmet)'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Log_Message
+  Date="2:16:08 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:16:08 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:16:09 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:16:09 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:16:12 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="2:16:12 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="2:16:25 PM April 11, 2026">
+  <Message>You are about to delete 4 forcing or mediation functions'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Log_Message
+  Date="2:16:27 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:16:27 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:16:27 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:16:28 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:16:31 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="2:16:31 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="2:17:46 PM April 11, 2026">
+  <Message>You are about to delete forcing or mediation function 'DIA PP Comp SC217'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Log_Message
+  Date="2:17:48 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:17:48 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:17:48 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:17:49 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:17:52 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="2:17:52 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="2:18:09 PM April 11, 2026">
+  <Message>You are about to delete 4 forcing or mediation functions'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Log_Message
+  Date="2:18:13 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:18:13 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:18:13 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:18:14 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:18:17 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="2:18:17 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="2:21:00 PM April 11, 2026">
+  <Message>You are about to delete 27 forcing or mediation functions'. This action cannot be undone. Are you sure you want to do this?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>ShapesManager</Message_Source>
+  <Message_DataType>Forcing</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Warning_Message>
+<Log_Message
+  Date="2:21:04 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:21:04 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:21:04 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="2:21:05 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="2:21:08 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="2:21:08 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="2:23:03 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' has been saved.</Message>
+  <Message_Type>DataModified</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Information_Message
+  Date="3:02:24 PM April 11, 2026">
+  <Message>Options applied successfully.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>External</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="3:02:42 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' has been saved.</Message>
+  <Message_Type>DataModified</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="3:03:38 PM April 11, 2026">
+  <Message>Options applied successfully.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>External</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="3:03:58 PM April 11, 2026">
+  <Message>Options applied successfully.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>External</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Information_Message
+  Date="3:09:47 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' has been saved.</Message>
+  <Message_Type>DataModified</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Log_Message
+  Date="3:12:17 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="3:12:17 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="3:12:17 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="3:12:17 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="3:12:17 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="3:12:18 PM April 11, 2026">
+  <Message>Model closed</Message>
+</Log_Message>
+<Session_Started
+  Date="3:12:38 PM April 11, 2026">
+  <Model>SOGEM-LTL_ewe6_7_19295_v19</Model>
+  <LogFile>C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19_log.xml</LogFile>
+  <Is64BitExe>True</Is64BitExe>
+  <CultureOS>English (Canada)</CultureOS>
+  <CultureUI>English (United Kingdom)</CultureUI>
+  <DecimalSeparator>.</DecimalSeparator>
+</Session_Started>
+<Information_Message
+  Date="3:12:38 PM April 11, 2026">
+  <Message>Ecopath model 'C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19.eweaccdb' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="3:12:59 PM April 11, 2026">
+  <Message>Catch information (Landing + Discard) is missing for one of more fleets.</Message>
+  <Message_Type>NoCatchForFleet</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>FleetInput</Message_DataType>
+</Warning_Message>
+<Warning_Message
+  Date="3:12:59 PM April 11, 2026">
+  <Message>Catch information (Landing + Discard) is missing for one of more fleets.</Message>
+  <Message_Type>NoCatchForFleet</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>FleetInput</Message_DataType>
+</Warning_Message>
+<Information_Message
+  Date="3:13:01 PM April 11, 2026">
+  <Message>Ecopath run completed.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Log_Message
+  Date="3:13:01 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="3:13:01 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="3:13:01 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="3:13:02 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Log_Message
+  Date="3:13:06 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="3:13:09 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Log_Message
+  Date="3:17:17 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="3:17:19 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="5:05:13 PM April 11, 2026">
+  <Message>Options applied successfully.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>External</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="5:08:29 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' has been saved.</Message>
+  <Message_Type>DataModified</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="5:15:15 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' has been saved.</Message>
+  <Message_Type>DataModified</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="5:18:45 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' has been saved.</Message>
+  <Message_Type>DataModified</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Log_Message
+  Date="5:19:54 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:19:56 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:19:56 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:19:56 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:19:57 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:19:57 PM April 11, 2026">
+  <Message>Model closed</Message>
+</Log_Message>
+<Session_Started
+  Date="5:20:50 PM April 11, 2026">
+  <Model>SOGEM-LTL_ewe6_7_19295_v19</Model>
+  <LogFile>C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19_log.xml</LogFile>
+  <Is64BitExe>True</Is64BitExe>
+  <CultureOS>English (Canada)</CultureOS>
+  <CultureUI>English (United Kingdom)</CultureUI>
+  <DecimalSeparator>.</DecimalSeparator>
+</Session_Started>
+<Information_Message
+  Date="5:20:50 PM April 11, 2026">
+  <Message>Ecopath model 'C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19.eweaccdb' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="5:21:27 PM April 11, 2026">
+  <Message>Catch information (Landing + Discard) is missing for one of more fleets.</Message>
+  <Message_Type>NoCatchForFleet</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>FleetInput</Message_DataType>
+</Warning_Message>
+<Warning_Message
+  Date="5:21:27 PM April 11, 2026">
+  <Message>Catch information (Landing + Discard) is missing for one of more fleets.</Message>
+  <Message_Type>NoCatchForFleet</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>FleetInput</Message_DataType>
+</Warning_Message>
+<Information_Message
+  Date="5:21:30 PM April 11, 2026">
+  <Message>Ecopath run completed.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Log_Message
+  Date="5:21:33 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:21:33 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:21:33 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="5:21:34 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Log_Message
+  Date="5:21:43 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="5:21:47 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Log_Message
+  Date="5:22:34 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="5:22:36 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="5:22:53 PM April 11, 2026">
+  <Message>Options applied successfully.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>External</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="5:23:00 PM April 11, 2026">
+  <Message>Options applied successfully.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>External</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="5:24:35 PM April 11, 2026">
+  <Message>Data successfully saved to 'C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\static maps\depth.asc'</Message>
+  <Message_Type>DataExport</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="5:25:05 PM April 11, 2026">
+  <Message>Data successfully saved to 'C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\static maps\temp_0to10m_avg_clima.asc'</Message>
+  <Message_Type>DataExport</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="5:25:22 PM April 11, 2026">
+  <Message>Data successfully saved to 'C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\static maps\salin_0to10m_avg_clima.asc'</Message>
+  <Message_Type>DataExport</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="5:25:39 PM April 11, 2026">
+  <Message>Data successfully saved to 'C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\static maps\PAR_avg_clima.asc'</Message>
+  <Message_Type>DataExport</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="5:26:10 PM April 11, 2026">
+  <Message>Data successfully saved to 'C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\static maps\excluded_cells.asc'</Message>
+  <Message_Type>DataExport</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="5:26:49 PM April 11, 2026">
+  <Message>Options applied successfully.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>External</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Question_Message
+  Date="5:30:17 PM April 11, 2026">
+  <Message>Unsaved changes in Ecopath and Ecospace will be lost if you proceed. Do you wish to save these changes?</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Core</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+  <Message_Reply>YES</Message_Reply>
+  <Message_Suppressable>False</Message_Suppressable>
+  <Message_Suppressed>False</Message_Suppressed>
+</Question_Message>
+<Information_Message
+  Date="5:30:22 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' has been saved.</Message>
+  <Message_Type>DataModified</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Log_Message
+  Date="5:30:29 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:30:29 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:30:29 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:30:29 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:30:29 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:30:29 PM April 11, 2026">
+  <Message>Model closed</Message>
+</Log_Message>
+<Session_Started
+  Date="5:30:46 PM April 11, 2026">
+  <Model>SOGEM-LTL_ewe6_7_19295_v19</Model>
+  <LogFile>C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19_log.xml</LogFile>
+  <Is64BitExe>True</Is64BitExe>
+  <CultureOS>English (Canada)</CultureOS>
+  <CultureUI>English (United Kingdom)</CultureUI>
+  <DecimalSeparator>.</DecimalSeparator>
+</Session_Started>
+<Information_Message
+  Date="5:30:46 PM April 11, 2026">
+  <Message>Ecopath model 'C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19.eweaccdb' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Log_Message
+  Date="5:33:21 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:33:21 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:33:21 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:33:21 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:33:21 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:33:21 PM April 11, 2026">
+  <Message>Model closed</Message>
+</Log_Message>
+<Session_Started
+  Date="5:33:35 PM April 11, 2026">
+  <Model>SOGEM-LTL_ewe6_7_19295_v19</Model>
+  <LogFile>C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19_log.xml</LogFile>
+  <Is64BitExe>True</Is64BitExe>
+  <CultureOS>English (Canada)</CultureOS>
+  <CultureUI>English (United Kingdom)</CultureUI>
+  <DecimalSeparator>.</DecimalSeparator>
+</Session_Started>
+<Information_Message
+  Date="5:33:35 PM April 11, 2026">
+  <Message>Ecopath model 'C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19.eweaccdb' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Warning_Message
+  Date="5:33:46 PM April 11, 2026">
+  <Message>Catch information (Landing + Discard) is missing for one of more fleets.</Message>
+  <Message_Type>NoCatchForFleet</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>FleetInput</Message_DataType>
+</Warning_Message>
+<Warning_Message
+  Date="5:33:46 PM April 11, 2026">
+  <Message>Catch information (Landing + Discard) is missing for one of more fleets.</Message>
+  <Message_Type>NoCatchForFleet</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>FleetInput</Message_DataType>
+</Warning_Message>
+<Information_Message
+  Date="5:33:48 PM April 11, 2026">
+  <Message>Ecopath run completed.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Log_Message
+  Date="5:33:49 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:33:49 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:33:49 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="5:33:50 PM April 11, 2026">
+  <Message>Ecosim scenario 'Ecosim_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecosim</Message_Source>
+  <Message_DataType>EcoSimScenario</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Log_Message
+  Date="5:33:59 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="5:34:04 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Log_Message
+  Date="5:34:24 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Information_Message
+  Date="5:34:27 PM April 11, 2026">
+  <Message>Ecospace scenario 'Ecospace_SC300' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecospace</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Information_Message
+  Date="5:34:36 PM April 11, 2026">
+  <Message>Options applied successfully.</Message>
+  <Message_Type>Any</Message_Type>
+  <Message_Source>External</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+<Log_Message
+  Date="5:34:55 PM April 11, 2026">
+  <Message>EwECore.cMessageHandler.SendMessage(cMessage) Delegate has not been initialized.</Message>
+</Log_Message>
+<Entry>
+  <Formcannotberesolved>frmEwE6 cmdNavigate OnInvoke</Formcannotberesolved>
+</Entry>
+<Log_Message
+  Date="5:38:41 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:38:44 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:38:44 PM April 11, 2026">
+  <Message>Ecospace scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:38:44 PM April 11, 2026">
+  <Message>Ecotracer scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:38:44 PM April 11, 2026">
+  <Message>Ecosim scenario closed</Message>
+</Log_Message>
+<Log_Message
+  Date="5:38:44 PM April 11, 2026">
+  <Message>Model closed</Message>
+</Log_Message>
+<Session_Started
+  Date="5:49:04 PM April 11, 2026">
+  <Model>SOGEM-LTL_ewe6_7_19295_v19</Model>
+  <LogFile>C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19_log.xml</LogFile>
+  <Is64BitExe>True</Is64BitExe>
+  <CultureOS>English (Canada)</CultureOS>
+  <CultureUI>English (United Kingdom)</CultureUI>
+  <DecimalSeparator>.</DecimalSeparator>
+</Session_Started>
+<Information_Message
+  Date="5:49:04 PM April 11, 2026">
+  <Message>Ecopath model 'C:\Users\Greig\Documents\GitHub\SOGEM-LTL\model\SOGEM-LTL_ewe6_7_19295_v19.eweaccdb' loaded.</Message>
+  <Message_Type>DataAddedOrRemoved</Message_Type>
+  <Message_Source>Ecopath</Message_Source>
+  <Message_DataType>NotSet</Message_DataType>
+</Information_Message>
+</doc>

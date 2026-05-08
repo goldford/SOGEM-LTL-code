@@ -1,0 +1,62 @@
+Steps to prep data fields for offline linking 
+of HOTSSea v1 NEMO model to ECOSPACE 2D (and Ecosim)
+3 day, carbon-based model
+
+# ------------------------------------
+Forcings from HOTSSea v1 NEMO Model:
+# ------------------------------------
+1a_NEMO_dailyNEMO_to_3dayASC_vserver.py 
+- run on hpc cluster
+- process daily NEMO outputs to ASC format for 3-day EwE Model
+1a_NEMO_dailyto3dailyASC_scheduler.sh
+ - scheduler for on-server processing of script 1a
+1b_NEMO_dailyNEMO_to3dayASC_vPC.py
+ - version of script 1a but for local PC runs (v slow)
+1c_EcospaceASC_NEMO3day_toEcosim3Day.py
+- allows separate creation of Ecosim TS give Ecospace ASC
+  (saves a little time for post-processing)
+
+
+# ------------------------------------
+Light from RDRS v2.1 Model
+# ------------------------------------
+2a_Light_toNEMOgrid_hourly.py
+ - interpolate light from RDRS to NEMO grid
+2b_Light_Hourly_toDailyandMonthly.ksh
+ - server ksh script using nco cdo for processing raw RDRS 2.1 outputs
+
+
+# ------------------------------------
+Photosynthetically Active Radiation (PAR) Depth Integrated over the Mixing Layer
+# ------------------------------------
+3a_PAR3_VarK_VarZ_3day.py
+ - does depth integration w/ options - this v setup uses variable K and Z
+3a_PAR3_VarK_VarZ_3day_scheduler.sh
+ - schedules batch job for submission of 3a to HPC server
+3b_PAR3_VarK_VarZ_clima1980-2018.py
+ - produces a climatological mean from 3a outputs
+
+
+# ------------------------------------
+Wind from RDRS v2.1 Model
+# ------------------------------------
+4a_wind_RDRS_toNEMOgrid_hourly.py
+ - interpolates RDRS wind to NEMO grid
+4a_submit_rdrstonemo_wind.sh
+ - submits 4a as batch job on HPC server
+4b_Wind_Hourly_toDailyandMonthly.ksh
+ - takes outputs from 4a, processes to daily and monthly
+4c_Data Prep - 1 Day to 3 Day Wind RDRS vPC.py
+ - processes from 1 day to 3 day; setup for desktop PC (slow)
+
+# ------------------------------------
+Miscellaneous Helper Scripts
+# ------------------------------------
+5_ecospacelandmask_fromdepths.py
+ - self-explanatory
+6_Ecospace Data Prep - 1b - 3day ASC to NC.py
+ - creates nicer NC file from the ASCs (kind of redundant)
+7_Make_Dummy_Forcings_ASC_Spinup.py
+ - repeats the first year 1980 for fake 1978, 1979 years for spin-up
+8_Forcing_Climatol_anoms_from3dayASC.py
+ - helps convert the Ecospace ASC's to anomalies (eg for bottom temp experiment)

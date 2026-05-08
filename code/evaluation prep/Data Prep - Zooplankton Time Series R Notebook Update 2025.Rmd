@@ -1,0 +1,1953 @@
+---
+title: "Data Prep and Visual - Zooplankton R notebook"
+output: html notebook and visuals
+author: Greig Oldford
+created: May 2024
+purpose: Summarize, explore, plot Zooplankton data from SoG surveys
+---
+
+Purpose: 
+Update old notebook used to extract biomass from zooplankton data provided with
+#https://open.canada.ca/data/en/dataset/2822c11d-6b6c-437e-ad65-85f584522adc
+#Ian Perry, R., Young, K., Galbraith, M., Chandler, P., Velez-Espino, A., & Baillie, S. (2021). Zooplankton variability in the Strait of Georgia, Canada, and relationships with the marine survivals of Chinook and Coho salmon. PLoS ONE, 16(1 January), e0245941. https://doi.org/10.1371/journal.pone.0245941
+
+# goal is to convert to carbon for evaluation of model performance
+
+# section X - no longer included since data is aggregated by bespoke species groupings
+# (see archived jupyter R notebook)
+# supplemental table 1 from 
+# https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0245941#sec023
+# MODIFIED/Perry2021_Supp1_Tab1.csv
+
+# section 1
+# look at the dominant species of each functional group 
+#raw downloaded from: https://open.canada.ca/data/en/dataset/2822c11d-6b6c-437e-ad65-85f584522adc
+#Ian Perry, R., Young, K., Galbraith, M., Chandler, P., Velez-Espino, A., & Baillie, S. (2021). Zooplankton variability in the Strait of Georgia, Canada, and relationships with the marine survivals of Chinook and Coho salmon. PLoS ONE, 16(1 January), e0245941. https://doi.org/10.1371/journal.pone.0245941
+
+# to do: cross check season definitions with Perry's
+#        2024-05-13 - convert not only DW to WW but also DW to C
+
+# note
+# # Boldt et al 2018 data shows mediocre year in 2000 for herring
+# but Perry et al 2021 data show big year?? What species??
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(stats)
+library(zoo)
+library(RColorBrewer)
+library(treemapify)
+library(cowplot)
+
+#install.packages("treemapify", repos='http://cran.us.r-project.org')
+
+
+```
+
+```{r}
+
+# note no bottom depths < 60 m in these data (already filtered)
+
+path = "C://Users//Greig//Sync//6. SSMSP Model//Model Greig//Data//4. Zooplankton//Zoop_Perryetal_2021//MODIFIED//"
+#path = "D://Sync//6. SSMSP Model//Model Greig//Data//4. Zooplankton//Zoop_Perryetal_2021//MODIFIED//"
+
+#a1996_2018_supp2_df <- read.csv(paste(path, file,sep=""))
+# create survey depth difference field for density calc following Perry et al pers. comm. Nov 2021
+#a1996_2018_supp2_df['depthrange'] = abs(a1996_2018_supp2_df['startz.m'] - a1996_2018_supp2_df['endz.m'])
+#print(colnames(a1996_2018_supp2_df))
+#head(a1996_2018_supp2_df[21:46])
+
+#path_out_TS = "D://Sync//6. SSMSP Model//Model Greig//Data//4. Zooplankton//Zoop_Perryetal_2021//MODIFIED//"
+path_depths =  "C://Users//Greig//Documents//GitHub//Ecosystem-Model-Data-Framework//data//basemap//"
+
+#file = "Perry2021_Supp2_Tab1.csv" # this is aggregated data
+
+file = "Zoopl_SofG_1996-2018_EN_sizeclassesseparate.csv"
+file_depths = "Depths_gt_zero_domain.csv"
+
+df_2 <- read.csv(paste(path, file,sep=""))
+df_depths <- read.csv(paste(path_depths, file_depths,sep=""))
+
+
+
+```
+
+# read data, set conversion factors now
+
+```{r}
+mg_to_g = 0.001
+
+# DRY WEIGHT TO WET WEIGHT
+#calc WW biomass density g m-2 from concentration as per Perry et al (pers comm)
+# using assumption that all zoop are 85% water (mult by 6.66) and jelly as 95% water
+DW_to_WW_zoop = 6.66 # default
+DW_to_WW_scyphozoa = 25 # Mean from Larson, 1986 (tab 2): 5% DW; Acuna, Lopez-Urrutia, Colin 2011 - avg of aurelia (52) and cyanea (34) WW:DW
+DW_to_WW_medusae = 25 # Mean from Larson, 1986 (Tab 2): 4% DW; Acuna, Lopez-Urrutia, Colin 2011 & Larson, 19- avg of Aequorea (54), WW:DW
+DW_to_WW_ctenop = 25 # Based on Larson, 1986, Pleurobrachia brachei 96 percent water 
+DW_to_WW_fish = 5 # Omori 1969 Tab 
+DW_to_WW_lgcope = 5 # avg from Omori of several lg copepods 
+DW_to_WW_medsmcope = 7 # Omori 1969, avg across several
+DW_to_WW_chaetognaths = 10 # Nakamura et al, 2007; Pauly et al., 2021
+DW_to_WW_mysiids = 5.5 # Omori 1969
+DW_to_WW_amphipod = 4 # Omori 1969 (avg of gammarid / hyperiid)
+DW_to_WW_insect = 3.6 # Omori 1969 - water strider
+DW_to_WW_larvacean = 25 # guesstimate
+DW_to_WW_decapods = 10 # Larson, 1986 in Moriarty, 2009
+DW_to_WW_euphs = 7.5 # avg of Omori 1969 (4.7) and Moriarty, 2009 (10)
+DW_to_WW_ostrac = 4.1 #Nakamura et al, 2007
+DW_to_WW_siponophora = 28 #Moriarty, 2009
+DW_to_WW_others = 10 #others
+
+# used in unaggregated data analysis for conversion
+DW_to_WW_ZC1_EUP = DW_to_WW_euphs
+DW_to_WW_ZC2_AMP = DW_to_WW_amphipod
+DW_to_WW_ZC3_DEC = DW_to_WW_decapods
+DW_to_WW_ZC4_CLG = DW_to_WW_lgcope
+DW_to_WW_ZC5_CSM = DW_to_WW_medsmcope
+
+DW_to_WW_ZG1_JEL = DW_to_WW_scyphozoa
+DW_to_WW_ZG2_CTH = (DW_to_WW_ctenop + DW_to_WW_siponophora) / 2
+DW_to_WW_ZG3_CHA = DW_to_WW_chaetognaths
+DW_to_WW_ZG4_LAR = DW_to_WW_larvacean
+
+DW_to_WW_ZF1_ICH = DW_to_WW_fish
+
+
+# DRY WEIGHT TO CARBON (see table in report)
+DW_to_C_zoop = 0.3  # default
+DW_to_C_scyphozoa = 0.07    # Ikeda, 2014b; Larson, 1987; Lüskow et al., 2021
+DW_to_C_medusae = 0.09      # Ikeda, 2014b; Larson, 1987; Lüskow et al., 2021 (guess)
+DW_to_C_ctenop = 0.13       # Ikeda, 2014b; Larson, 1987; Lüskow et al., 2021
+DW_to_C_fish = 0.42         # Uye, 1982 
+DW_to_C_lgcope = 0.4        # Ikeda et al., 2001; Nakamura et al., 2017
+DW_to_C_medsmcope = 0.29    # Ikeda et al., 2001; Nakamura et al., 2017
+DW_to_C_chaetognaths = 0.38 # Ikeda & Takahashi, 2012 
+DW_to_C_mysiids = 0.45      # Omori, 1969; Nakamura et al., 2017
+DW_to_C_amphipod = 0.43     # Ikeda, 2013
+DW_to_C_insect = 0.53       # Omori, 1969
+DW_to_C_larvacean = 0.3     # Uye, 1982; Nakamura et al., 2017
+DW_to_C_decapods = 0.36     # Lindley, 1998
+DW_to_C_euphs = 0.43        # Ikeda, 2014; Tao et al 2015
+DW_to_C_ostrac = 0.45       # Nakamura et al., 2017
+DW_to_C_siponophora = 0.05  # salp; Nakamura et ap. 2017
+DW_to_C_others = 0.35
+
+DW_to_C_ZC1_EUP = DW_to_C_euphs
+DW_to_C_ZC2_AMP = DW_to_C_amphipod
+DW_to_C_ZC3_DEC = DW_to_C_decapods
+DW_to_C_ZC4_CLG = DW_to_C_lgcope
+DW_to_C_ZC5_CSM = DW_to_C_medsmcope
+DW_to_C_ZG1_JEL = DW_to_C_scyphozoa
+DW_to_C_ZG2_CTH = (DW_to_C_ctenop + DW_to_C_siponophora) / 2
+DW_to_C_ZG3_CHA = DW_to_C_chaetognaths
+DW_to_C_ZG4_LAR = DW_to_C_larvacean
+DW_to_C_ZF1_ICH = DW_to_C_fish
+
+```
+
+
+###Un-aggregated Data Analysis¶
+#explore dominant species of each functional group
+
+
+#raw downloaded from: https://open.canada.ca/data/en/dataset/2822c11d-6b6c-437e-ad65-85f584522adc
+#Ian Perry, R., Young, K., Galbraith, M., Chandler, P., Velez-Espino, A., & Baillie, S. (2021). Zooplankton variability in the Strait of Georgia, Canada, and relationships with the marine survivals of Chinook and Coho salmon. PLoS ONE, 16(1 January), e0245941. https://doi.org/10.1371/journal.pone.0245941
+
+
+#Note Jul 2022 - there is an issue where the Genus_species is repeated within individual tows (indexed by 'index')
+```{r}
+df_2
+
+```
+
+
+
+```{r}
+# correspondence with I. Perry and K. Young Nov 16 2021
+# - the mg m-2 is calculated using the tow start - end depth
+# calculate the tow depth range
+df_2['tow_depth_range'] = abs(df_2['Tow_start_depth.m.'])-abs(df_2['Tow_end_depth.m.'])
+summary(df_2['tow_depth_range'])
+
+# //////////////////////////////////////////////////////////////////////////////////
+# net avoidance euphausiids adjust by 3x for adults
+netavoid_x = 3
+
+df_2 = df_2 %>%
+    mutate(Abundance.m3. = case_when((size_class=="s3" & Order == "Euphausiacea") ~ Abundance.m3. * netavoid_x,
+                                    TRUE ~ Abundance.m3.)) 
+
+# cross-check
+euphausiids = df_2 %>% filter(Order == "Euphausiacea")
+colnames(euphausiids)
+#arrange(euphausiids, desc(B_g_m2_DW), .by_group = FALSE)
+print(unique(euphausiids$Genus_species))
+
+# //////////////////////////////////////////////////////////////////////////////////
+# create a season field
+df_2 = df_2 %>%
+    mutate(B_mg_m3_DW = Abundance.m3. * Average_biomass_per_individual.mg.) %>% # convert to mg m-3
+    mutate(B_g_m2_DW = B_mg_m3_DW * tow_depth_range * mg_to_g) %>%  # mg m-3 to g m-2
+    # not converting to WW B yet
+    mutate(season = case_when(Month == 12 | Month == 1 | Month == 2 ~ "winter", 
+                            Month == 3 | Month == 4 | Month == 5 ~ "spring", 
+                            Month == 6 | Month == 7 | Month == 8 ~ "summer",  
+                            Month == 9 | Month == 10 | Month == 11 ~ "fall")) 
+nrow(df_2)
+
+# Perry et al selected start depths with gt 150 m and  those with start depths <150 where 
+# the tow depth range was gt 70% of the water column
+df_2 = df_2 %>% 
+  mutate(towrange_as_prop_watercol = tow_depth_range / Bottom_depth.m.) %>%
+  filter(towrange_as_prop_watercol >= 0.7 | Tow_start_depth.m. >= 150)
+nrow(df_2)
+# seems like the filter above was already applied
+#print("groups ordered by DW B")
+#arrange(df_2, desc(B_g_m2_DW), .by_group = FALSE)
+
+
+# //////////////////////////////////////////////////////////////////////////////////
+# n_surveys used to avoid biasing density estimates using these presence-only data
+# (absent species are not reported in these data)
+n_surveys = n_distinct(df_2[c('Index')])
+df_2$n_surveys = n_surveys
+# table of surveys conducted per year
+n_surveys_yr = df_2 %>% group_by(Year,Index) %>% 
+    summarise(n = n()) %>%
+    mutate(surveycount = 1) %>%
+    ungroup() %>%
+    group_by(Year) %>%
+    summarise(count_surveys_yr = sum(surveycount))
+
+
+df_2 = inner_join(df_2, n_surveys_yr, by = c("Year"="Year"))
+#df_2 = inner_join(df_2, n_surveys_yr, cols = "Year")
+
+
+# per year  and season
+n_surveys_yrseas = df_2 %>% group_by(Year,season,Index) %>% 
+    summarise(n = n()) %>%
+    mutate(surveycount = 1) %>%
+    ungroup() %>%
+    group_by(Year,season) %>%
+    summarise(count_surveys_yrseas = sum(surveycount))
+
+
+#df_2 = inner_join(df_2, n_surveys_yrseas, cols = c("Year","season"))
+df_2 = inner_join(df_2, n_surveys_yrseas, by = c("Year"="Year", "season"="season"))
+
+
+colnames(df_2)
+
+# //////////////////////////////////////////////////////////////////////////////////
+# get average by YEAR and SEASON using taxa resoluation (size class)
+print("YEAR, SEASON, summary nrow before")
+nrow(df_2)
+df_2_sizeclasslev = df_2 %>% 
+    group_by(Year, season, Phylum,Class,Order,Family,Genus,Species,Genus_species,Size_class_or_life_stage,n_surveys,count_surveys_yr,count_surveys_yrseas) %>%
+    summarise(B_mg_m3_DW = sum(round(B_mg_m3_DW, digits=3)),
+          B_g_m2_DW = sum(round(B_g_m2_DW, digits=3)),
+          Abundance.m3 = sum(round(Abundance.m3., digits=3)),
+          AdultBody_size_mg = mean(round(Average_biomass_per_individual.mg., digits=3)),
+          # n_occurrences is not used but summarizes how often the group appears in that season / year surveys
+          n_occurrences = n()) %>%  
+    # divide the sums from above by proper denominator (count of surveys done including zero abundance ones)
+    mutate(B_mean_mg_m3_DW = round(B_mg_m3_DW / count_surveys_yrseas, digits=3)) %>%
+    mutate(B_mean_g_m2_DW = round(B_g_m2_DW / count_surveys_yrseas, digits=3)) %>%
+    distinct() %>%
+    arrange(desc(B_mean_g_m2_DW), .by_group = FALSE)
+print("nrow_after")
+nrow(df_2_sizeclasslev)
+
+# old way
+# print("summarize by Genus_species instead of Size_class_or_life_stage")
+# print("nrow before")
+# nrow(df_2)
+# df_2 = df_2 %>% 
+#     group_by(Index, Station, Longitude..N., Latitude..W., Year, Month, Day, Time, season, Phylum,Class,Order,Family,Genus,Species,Genus_species,n_surveys,count_surveys_yr,count_surveys_yrseas) %>%
+#     summarise(B_mg_m3_DW = sum(round(B_mg_m3_DW, digits=2)),
+#           B_g_m2_DW = sum(round(B_g_m2_DW, digits=2)),
+#           Abundance.m3 = sum(round(Abundance.m3., digits=2)),
+#           AdultBody_size_mg = max(round(Average_biomass_per_individual.mg., digits=2))) 
+# print("nrow_after")
+# nrow(df_2)
+
+
+# //////////////////////////////////////////////////////////////////////////////////
+#  reduce to speices only by SUMMING b across all SIZE CLASSES (for each year and season)
+df_2_seasyr_specieslev = df_2_sizeclasslev %>% 
+    group_by(Year, season, Phylum,Class,Order,Family,Genus,Species,Genus_species,n_surveys,count_surveys_yr,count_surveys_yrseas) %>%
+    summarise(B_mean_mg_m3_DW = sum(round(B_mean_mg_m3_DW, digits=2)),
+          B_mean_g_m2_DW = sum(round(B_mean_g_m2_DW, digits=2)),
+          Abundance_mean_m3 = sum(round(Abundance.m3, digits=2)),
+          # want to use adults size class for reference so take max mean body size
+          AdultBody_mean_size_mg = max(round(AdultBody_size_mg, digits=2))) %>%
+      distinct() %>%
+      arrange(desc(B_mean_g_m2_DW), .by_group = FALSE)
+print("aggregating by species complete")
+
+
+# ////////////////////////////////////////////////////////////////////
+# label taxa by MODEL CODE and re-group
+df_2_seasyr_specieslev$modelgroup = "misc"
+df_2_seasyr_specieslev = df_2_seasyr_specieslev %>% 
+    mutate(modelgroup = case_when((Phylum=="Chordata"& Class!="Appendicularia") ~ "ZF1-ICH",
+                                  Phylum=="Cnidaria" & (Class=="Scyphozoa" | Family=="Aequoreidae") ~ "ZS1-JEL",
+                                  Phylum=="Ctenophora" | (Phylum=="Cnidaria" & Class=="Hydrozoa" & Family!="Aequoreidae") ~ "ZS2-CTH",
+                                  (Phylum=="Chaetognatha" | Class=="Polychaeta" | Class=="Gastropoda") ~ "ZS3-CHA",
+                                  Class=="Appendicularia" ~ "ZS4-LAR",
+                                  ((Order=="Calanoida" & Family!="Calanidae" & Family!="Eucalanidae") | Class=="Ostracoda") ~ "ZC5-CSM",
+                                  (Family=="Calanidae" | Family=="Eucalanidae") ~ "ZC4-CLG",
+                                  (Order=="Decapoda" | Order=="Thecostraca") ~ "ZC3-DEC",
+                                  Order=="Amphipoda"  ~ "ZC2-AMP",
+                                  Order=="Euphausiacea" ~ "ZC1-EUP",
+                                  TRUE ~ "misc"
+                                 )
+           ) %>% 
+    arrange(desc(B_mean_g_m2_DW), .by_group = FALSE)
+print("completed modelgroup labels")
+
+
+
+# ////////////////////////////////////////////////////////////////////
+# convert DW to WET WEIGHT 
+
+df_2_seasyr_specieslev$B_mean_g_m2_WW = 0
+df_2_seasyr_specieslev$B_mean_mg_m3_WW = 0
+df_2_seasyr_specieslev = df_2_seasyr_specieslev %>% 
+    mutate(B_mean_g_m2_WW = case_when(modelgroup=="ZC1-EUP" ~ DW_to_WW_ZC1_EUP * B_mean_g_m2_DW,
+                                  modelgroup=="ZC2-AMP" ~ DW_to_WW_ZC2_AMP * B_mean_g_m2_DW,
+                                  modelgroup=="ZC3-DEC" ~ DW_to_WW_ZC3_DEC * B_mean_g_m2_DW,
+                                  modelgroup=="ZC4-CLG" ~ DW_to_WW_ZC4_CLG * B_mean_g_m2_DW,
+                                  modelgroup=="ZC5-CSM" ~ DW_to_WW_ZC5_CSM * B_mean_g_m2_DW,
+                                  modelgroup=="ZS1-JEL" ~ DW_to_WW_ZG1_JEL * B_mean_g_m2_DW,
+                                  modelgroup=="ZS2-CTH" ~ DW_to_WW_ZG2_CTH * B_mean_g_m2_DW,
+                                  modelgroup=="ZS3-CHA" ~ DW_to_WW_ZG3_CHA * B_mean_g_m2_DW,
+                                  modelgroup=="ZS4-LAR" ~ DW_to_WW_ZG4_LAR * B_mean_g_m2_DW,
+                                  modelgroup=="ZF1-ICH" ~ DW_to_WW_ZF1_ICH * B_mean_g_m2_DW,
+                                  # else default
+                                  TRUE ~ DW_to_WW_zoop * B_mean_g_m2_DW
+                                 )
+           ) %>% 
+    mutate(B_mean_mg_m3_WW = case_when(modelgroup=="ZC1-EUP" ~ DW_to_WW_ZC1_EUP * B_mean_mg_m3_DW,
+                                  modelgroup=="ZC2-AMP" ~ DW_to_WW_ZC2_AMP * B_mean_mg_m3_DW,
+                                  modelgroup=="ZC3-DEC" ~ DW_to_WW_ZC3_DEC * B_mean_mg_m3_DW,
+                                  modelgroup=="ZC4-CLG" ~ DW_to_WW_ZC4_CLG * B_mean_mg_m3_DW,
+                                  modelgroup=="ZC5-CSM" ~ DW_to_WW_ZC5_CSM * B_mean_mg_m3_DW,
+                                  modelgroup=="ZS1-JEL" ~ DW_to_WW_ZG1_JEL * B_mean_mg_m3_DW,
+                                  modelgroup=="ZS2-CTH" ~ DW_to_WW_ZG2_CTH * B_mean_mg_m3_DW,
+                                  modelgroup=="ZS3-CHA" ~ DW_to_WW_ZG3_CHA * B_mean_mg_m3_DW,
+                                  modelgroup=="ZS4-LAR" ~ DW_to_WW_ZG4_LAR * B_mean_mg_m3_DW,
+                                  modelgroup=="ZF1-ICH" ~ DW_to_WW_ZF1_ICH * B_mean_mg_m3_DW,
+                                  # else default
+                                  TRUE ~ DW_to_WW_zoop * B_mean_mg_m3_DW
+                                 )
+           ) %>% 
+    arrange(desc(B_mean_g_m2_WW), .by_group = FALSE)
+print("wet wet calculations complete")
+
+
+# ////////////////////////////////////////////////////////////////////
+# convert DW to CARBON
+df_2_seasyr_specieslev$B_mean_g_m2_C = 0
+df_2_seasyr_specieslev$B_mean_mg_m3_C = 0
+df_2_seasyr_specieslev = df_2_seasyr_specieslev %>% 
+    mutate(B_mean_g_m2_C = case_when(modelgroup=="ZC1-EUP" ~ DW_to_C_ZC1_EUP * B_mean_g_m2_DW,
+                                  modelgroup=="ZC2-AMP" ~ DW_to_C_ZC2_AMP * B_mean_g_m2_DW,
+                                  modelgroup=="ZC3-DEC" ~ DW_to_C_ZC3_DEC * B_mean_g_m2_DW,
+                                  modelgroup=="ZC4-CLG" ~ DW_to_C_ZC4_CLG * B_mean_g_m2_DW,
+                                  modelgroup=="ZC5-CSM" ~ DW_to_C_ZC5_CSM * B_mean_g_m2_DW,
+                                  modelgroup=="ZS1-JEL" ~ DW_to_C_ZG1_JEL * B_mean_g_m2_DW,
+                                  modelgroup=="ZS2-CTH" ~ DW_to_C_ZG2_CTH * B_mean_g_m2_DW,
+                                  modelgroup=="ZS3-CHA" ~ DW_to_C_ZG3_CHA * B_mean_g_m2_DW,
+                                  modelgroup=="ZS4-LAR" ~ DW_to_C_ZG4_LAR * B_mean_g_m2_DW,
+                                  modelgroup=="ZF1-ICH" ~ DW_to_C_ZF1_ICH * B_mean_g_m2_DW,
+                                  # else default
+                                  TRUE ~ DW_to_C_zoop * B_mean_g_m2_DW
+                                 )
+           ) %>% 
+    mutate(B_mean_mg_m3_C = case_when(modelgroup=="ZC1-EUP" ~ DW_to_C_ZC1_EUP * B_mean_mg_m3_DW,
+                                  modelgroup=="ZC2-AMP" ~ DW_to_C_ZC2_AMP * B_mean_mg_m3_DW,
+                                  modelgroup=="ZC3-DEC" ~ DW_to_C_ZC3_DEC * B_mean_mg_m3_DW,
+                                  modelgroup=="ZC4-CLG" ~ DW_to_C_ZC4_CLG * B_mean_mg_m3_DW,
+                                  modelgroup=="ZC5-CSM" ~ DW_to_C_ZC5_CSM * B_mean_mg_m3_DW,
+                                  modelgroup=="ZS1-JEL" ~ DW_to_C_ZG1_JEL * B_mean_mg_m3_DW,
+                                  modelgroup=="ZS2-CTH" ~ DW_to_C_ZG2_CTH * B_mean_mg_m3_DW,
+                                  modelgroup=="ZS3-CHA" ~ DW_to_C_ZG3_CHA * B_mean_mg_m3_DW,
+                                  modelgroup=="ZS4-LAR" ~ DW_to_C_ZG4_LAR * B_mean_mg_m3_DW,
+                                  modelgroup=="ZF1-ICH" ~ DW_to_C_ZF1_ICH * B_mean_mg_m3_DW,
+                                  # else default
+                                  TRUE ~ DW_to_C_zoop * B_mean_mg_m3_DW
+                                 )
+           ) %>% 
+    arrange(desc(B_mean_g_m2_C), .by_group = FALSE)
+print("carbon calculations complete")
+
+
+# //////////////////////////////////////////////////////////////////////////////////
+# summary across all YEARS - at species level, not modelgroup level
+
+# how many years of data?
+yearsdf = df_2_seasyr_specieslev %>% ungroup() %>% summarize(max_yr = max(Year),
+                                                  min_yr = min(Year))
+years = yearsdf$max_yr - yearsdf$min_yr
+df_2_summary = df_2_seasyr_specieslev %>% 
+    group_by(season,Phylum,Class,Order,Family,Genus,Species,Genus_species,modelgroup) %>%
+    summarise(B_sum_g_m2_DW = sum(round(B_mean_g_m2_DW, digits=4)),
+              B_sum_g_m2_WW = sum(round(B_mean_g_m2_WW, digits=4)),
+              B_sum_g_m2_C = sum(round(B_mean_g_m2_C, digits=4)),
+              B_sum_mg_m3_DW = sum(round(B_mean_mg_m3_DW, digits=4)),
+              B_sum_mg_m3_WW = sum(round(B_mean_mg_m3_WW, digits=4)),
+              B_sum_mg_m3_C = sum(round(B_mean_mg_m3_C, digits=4)),
+          AdultBody_size_mg_mean = mean(round(AdultBody_mean_size_mg, digits=4)),
+          n = n_surveys,
+          # n occurrences just used for cross checks
+          n_occurrences = n()) %>%
+    mutate(B_mean_g_m2_DW = round(B_sum_g_m2_DW / years, digits=4)) %>%
+    mutate(B_mean_g_m2_WW = round(B_sum_g_m2_WW / years, digits=4)) %>%
+    mutate(B_mean_g_m2_C = round(B_sum_g_m2_C / years, digits=4)) %>%
+    mutate(B_mean_mg_m3_DW = round(B_sum_mg_m3_DW / years, digits=4)) %>%
+    mutate(B_mean_mg_m3_WW = round(B_sum_mg_m3_WW / years, digits=4)) %>%
+    mutate(B_mean_mg_m3_C = round(B_sum_mg_m3_C / years, digits=4)) %>%
+    distinct() %>%
+    arrange(desc(B_mean_g_m2_DW), .by_group = FALSE)
+
+# df_2_summary
+
+# adjust this for compat with code below
+df_2_yrseas_mean = df_2_seasyr_specieslev
+df_2_yrseas_mean$AdultBody_size_mg_mean =  df_2_yrseas_mean$AdultBody_mean_size_mg
+print("seasonal summary across years complete")
+
+# ////////////////////////////////////////////////////////////////////
+# cross check stats on what groups are uncategorized
+#missing gastropods (mollusc; Limacina.helicina,Clione.limacina), fish
+
+df_2_summary %>% 
+  group_by(modelgroup) %>% 
+  summarize(mean = mean(B_mean_g_m2_DW),
+            sum = sum(B_mean_g_m2_DW)) %>%
+    arrange(desc(sum), .by_group = FALSE)
+
+df_2_summary %>% 
+  filter(modelgroup == "misc") %>%
+  group_by(Genus_species) %>% 
+  summarize(mean = mean(B_mean_g_m2_DW),
+            sum = sum(B_mean_g_m2_DW)) %>%
+    arrange(desc(sum), .by_group = FALSE)
+
+# ////////////////////////////////////////////////////////////////////
+# sum by group within season
+# get average by modelgroup over seasons
+
+ temp1 = df_2_summary %>%
+    group_by(season,modelgroup) %>%
+    summarise(B_mean_g_m2_DW = sum(round(B_mean_g_m2_DW, digits=4)),
+             B_mean_g_m2_WW = sum(round(B_mean_g_m2_WW, digits=4)),
+             B_mean_g_m2_C = sum(round(B_mean_g_m2_C, digits=4)),
+             B_mean_mg_m3_DW = sum(round(B_mean_mg_m3_DW, digits=4)),
+             B_mean_mg_m3_WW = sum(round(B_mean_mg_m3_WW, digits=4)),
+             B_mean_mg_m3_C = sum(round(B_mean_mg_m3_C, digits=4))) %>%
+    arrange(desc(B_mean_g_m2_DW), .by_group = FALSE) %>%
+    mutate(season = factor(season, levels=c("winter", "spring", "summer", "fall")))
+print("averaging all b across seasons...")
+
+n_seasons = 4
+avg_B_modelgroups = temp1 %>%
+    group_by(modelgroup) %>%
+    summarise(B_sum_g_m2_DW = sum(round(B_mean_g_m2_DW, digits=4)),
+             B_sum_g_m2_WW = sum(round(B_mean_g_m2_WW, digits=4)),
+             B_sum_g_m2_C = sum(round(B_mean_g_m2_C, digits=4)),
+             B_sum_mg_m3_DW = sum(round(B_mean_mg_m3_DW, digits=4)),
+             B_sum_mg_m3_WW = sum(round(B_mean_mg_m3_WW, digits=4)),
+             B_sum_mg_m3_C = sum(round(B_mean_mg_m3_C, digits=4))) %>%
+    mutate(B_mean_g_m2_DW = round(B_sum_g_m2_DW / n_seasons, digits=4)) %>%
+    mutate(B_mean_g_m2_WW = round(B_sum_g_m2_WW / n_seasons, digits=4)) %>%
+    mutate(B_mean_g_m2_C = round(B_sum_g_m2_C / n_seasons, digits=4)) %>%
+    mutate(B_mean_mg_m3_DW = round(B_sum_mg_m3_DW / n_seasons, digits=4)) %>%
+    mutate(B_mean_mg_m3_WW = round(B_sum_mg_m3_WW / n_seasons, digits=4)) %>%
+    mutate(B_mean_mg_m3_C = round(B_sum_mg_m3_C / n_seasons, digits=4)) %>%
+    arrange(desc(B_mean_g_m2_DW), .by_group = FALSE) 
+
+
+# ////////////////////////////////////////////////////////////////////
+# attempt to adjust for spatial sampling biases (see text)
+
+# ////////////////////////////////////////////////////////////////////
+# calc tow depth range percent of column on average
+# shoudl probably be seasonally stratified but this is quick and just a rough est
+avg_tow_depth_perc = df_2 %>% select(Index, tow_depth_range, Bottom_depth.m.) %>% 
+    mutate(tow_depth_range_per = tow_depth_range / Bottom_depth.m.) %>% 
+    distinct() %>% 
+    summarise(n = n(),
+             tow_depth_range_per_avg = mean(tow_depth_range_per)) %>% 
+    pull(tow_depth_range_per_avg)
+
+# ////////////////////////////////////////////////////////////////////
+# adjust for over-estimation due to deep water bias in samples
+# get annual total avg conc
+# WW
+ZC1_EUP_mg_m3_avg_WW = avg_B_modelgroups %>% filter(modelgroup == "ZC1-EUP") %>% pull(B_mean_mg_m3_WW)
+ZC2_AMP_mg_m3_avg_WW = avg_B_modelgroups %>% filter(modelgroup == "ZC2-AMP") %>% pull(B_mean_mg_m3_WW)
+ZC3_DEC_mg_m3_avg_WW = avg_B_modelgroups %>% filter(modelgroup == "ZC3-DEC") %>% pull(B_mean_mg_m3_WW)
+ZC4_CLG_mg_m3_avg_WW = avg_B_modelgroups %>% filter(modelgroup == "ZC4-CLG") %>% pull(B_mean_mg_m3_WW)
+ZC5_CSM_mg_m3_avg_WW = avg_B_modelgroups %>% filter(modelgroup == "ZC5-CSM") %>% pull(B_mean_mg_m3_WW)
+
+ZS1_JEL_mg_m3_avg_WW = avg_B_modelgroups %>% filter(modelgroup == "ZS1-JEL") %>% pull(B_mean_mg_m3_WW)
+ZS2_CTH_mg_m3_avg_WW = avg_B_modelgroups %>% filter(modelgroup == "ZS2-CTH") %>% pull(B_mean_mg_m3_WW)
+ZS3_CHA_mg_m3_avg_WW = avg_B_modelgroups %>% filter(modelgroup == "ZS3-CHA") %>% pull(B_mean_mg_m3_WW)
+ZS4_LAR_mg_m3_avg_WW = avg_B_modelgroups %>% filter(modelgroup == "ZS4-LAR") %>% pull(B_mean_mg_m3_WW)
+
+ZF1_ICH_mg_m3_avg_WW = avg_B_modelgroups %>% filter(modelgroup == "ZF1-ICH") %>% pull(B_mean_mg_m3_WW)
+misc_mg_m3_avg_WW = avg_B_modelgroups %>% filter(modelgroup == "misc") %>% pull(B_mean_mg_m3_WW)
+
+#carbon
+ZC1_EUP_mg_m3_avg_C = avg_B_modelgroups %>% filter(modelgroup == "ZC1-EUP") %>% pull(B_mean_mg_m3_C)
+ZC2_AMP_mg_m3_avg_C = avg_B_modelgroups %>% filter(modelgroup == "ZC2-AMP") %>% pull(B_mean_mg_m3_C)
+ZC3_DEC_mg_m3_avg_C = avg_B_modelgroups %>% filter(modelgroup == "ZC3-DEC") %>% pull(B_mean_mg_m3_C)
+ZC4_CLG_mg_m3_avg_C = avg_B_modelgroups %>% filter(modelgroup == "ZC4-CLG") %>% pull(B_mean_mg_m3_C)
+ZC5_CSM_mg_m3_avg_C = avg_B_modelgroups %>% filter(modelgroup == "ZC5-CSM") %>% pull(B_mean_mg_m3_C)
+
+ZS1_JEL_mg_m3_avg_C = avg_B_modelgroups %>% filter(modelgroup == "ZS1-JEL") %>% pull(B_mean_mg_m3_C)
+ZS2_CTH_mg_m3_avg_C = avg_B_modelgroups %>% filter(modelgroup == "ZS2-CTH") %>% pull(B_mean_mg_m3_C)
+ZS3_CHA_mg_m3_avg_C = avg_B_modelgroups %>% filter(modelgroup == "ZS3-CHA") %>% pull(B_mean_mg_m3_C)
+ZS4_LAR_mg_m3_avg_C = avg_B_modelgroups %>% filter(modelgroup == "ZS4-LAR") %>% pull(B_mean_mg_m3_C)
+
+ZF1_ICH_mg_m3_avg_C = avg_B_modelgroups %>% filter(modelgroup == "ZF1-ICH") %>% pull(B_mean_mg_m3_C)
+misc_mg_m3_avg_C = avg_B_modelgroups %>% filter(modelgroup == "misc") %>% pull(B_mean_mg_m3_C)
+
+
+df_depths$ZC1_EUP = 0
+df_depths$ZC2_AMP = 0
+df_depths$ZC3_DEC = 0
+df_depths$ZC4_CLG = 0
+df_depths$ZC5_CSM = 0
+
+df_depths$ZS1_JEL = 0
+df_depths$ZS2_CTH = 0
+df_depths$ZS3_CHA = 0
+df_depths$ZS4_LAR = 0
+
+df_depths$ZF1_FIS = 0
+df_depths$misc = 0
+
+# wet weight
+avg_B_WW_modelgroups_better = df_depths %>%
+    mutate(ZC1_EUP = depth * avg_tow_depth_perc * ZC1_EUP_mg_m3_avg_WW * mg_to_g) %>%
+    mutate(ZC2_AMP = depth * avg_tow_depth_perc * ZC2_AMP_mg_m3_avg_WW * mg_to_g) %>%
+    mutate(ZC3_DEC = depth * avg_tow_depth_perc * ZC3_DEC_mg_m3_avg_WW * mg_to_g) %>%
+    mutate(ZC4_CLG = depth * avg_tow_depth_perc * ZC4_CLG_mg_m3_avg_WW * mg_to_g) %>%
+    mutate(ZC5_CSM = depth * avg_tow_depth_perc * ZC5_CSM_mg_m3_avg_WW * mg_to_g) %>%
+    mutate(ZS1_JEL = depth * avg_tow_depth_perc * ZS1_JEL_mg_m3_avg_WW * mg_to_g) %>%
+    mutate(ZS2_CTH = depth * avg_tow_depth_perc * ZS2_CTH_mg_m3_avg_WW * mg_to_g) %>%
+    mutate(ZS3_CHA = depth * avg_tow_depth_perc * ZS3_CHA_mg_m3_avg_WW * mg_to_g) %>%
+    mutate(ZS4_LAR = depth * avg_tow_depth_perc * ZS4_LAR_mg_m3_avg_WW * mg_to_g) %>%
+    mutate(ZF1_ICH = depth * avg_tow_depth_perc * ZF1_ICH_mg_m3_avg_WW * mg_to_g) %>%
+    mutate(misc = depth * misc_mg_m3_avg_WW * mg_to_g) %>%
+    summarise(ZC1_EUP = round(mean(ZC1_EUP),digits=2),
+             ZC2_AMP = round(mean(ZC2_AMP),digits=2),
+             ZC3_DEC = round(mean(ZC3_DEC),digits=2),
+             ZC4_CLG = round(mean(ZC4_CLG),digits=2),
+             ZC5_CSM = round(mean(ZC5_CSM),digits=2),
+             ZS1_JEL = round(mean(ZS1_JEL),digits=2),
+             ZS2_CTH = round(mean(ZS2_CTH),digits=2),
+             ZS3_CHA = round(mean(ZS3_CHA),digits=2),
+             ZS4_LAR = round(mean(ZS4_LAR),digits=2),
+             ZF1_ICH = round(mean(ZF1_ICH),digits=2),
+             misc = round(mean(misc),digits=2)) %>%
+    pivot_longer(everything(), names_to = "modelgroup", values_to = "B_mean_g_m2_WW")
+
+# carbon
+avg_B_C_modelgroups_better = df_depths %>%
+    mutate(ZC1_EUP = depth * avg_tow_depth_perc * ZC1_EUP_mg_m3_avg_C * mg_to_g) %>%
+    mutate(ZC2_AMP = depth * avg_tow_depth_perc * ZC2_AMP_mg_m3_avg_C * mg_to_g) %>%
+    mutate(ZC3_DEC = depth * avg_tow_depth_perc * ZC3_DEC_mg_m3_avg_C * mg_to_g) %>%
+    mutate(ZC4_CLG = depth * avg_tow_depth_perc * ZC4_CLG_mg_m3_avg_C * mg_to_g) %>%
+    mutate(ZC5_CSM = depth * avg_tow_depth_perc * ZC5_CSM_mg_m3_avg_C * mg_to_g) %>%
+    mutate(ZS1_JEL = depth * avg_tow_depth_perc * ZS1_JEL_mg_m3_avg_C * mg_to_g) %>%
+    mutate(ZS2_CTH = depth * avg_tow_depth_perc * ZS2_CTH_mg_m3_avg_C * mg_to_g) %>%
+    mutate(ZS3_CHA = depth * avg_tow_depth_perc * ZS3_CHA_mg_m3_avg_C * mg_to_g) %>%
+    mutate(ZS4_LAR = depth * avg_tow_depth_perc * ZS4_LAR_mg_m3_avg_C * mg_to_g) %>%
+    mutate(ZF1_ICH = depth * avg_tow_depth_perc * ZF1_ICH_mg_m3_avg_C * mg_to_g) %>%
+    mutate(misc = depth * misc_mg_m3_avg_C * mg_to_g) %>%
+    summarise(ZC1_EUP = round(mean(ZC1_EUP),digits=4),
+             ZC2_AMP = round(mean(ZC2_AMP),digits=4),
+             ZC3_DEC = round(mean(ZC3_DEC),digits=4),
+             ZC4_CLG = round(mean(ZC4_CLG),digits=4),
+             ZC5_CSM = round(mean(ZC5_CSM),digits=4),
+             ZS1_JEL = round(mean(ZS1_JEL),digits=4),
+             ZS2_CTH = round(mean(ZS2_CTH),digits=4),
+             ZS3_CHA = round(mean(ZS3_CHA),digits=4),
+             ZS4_LAR = round(mean(ZS4_LAR),digits=4),
+             ZF1_ICH = round(mean(ZF1_ICH),digits=4),
+             misc = round(mean(misc),digits=4)) %>%
+    pivot_longer(everything(), names_to = "modelgroup", values_to = "B_mean_g_m2_C")
+
+
+
+# ////////////////////////////////////////////////////////////////////
+# convert back from WW to DW
+avg_B_WW_modelgroups_better$B_mean_g_m2_DW = 0
+avg_B_WW_modelgroups_better = avg_B_WW_modelgroups_better %>% 
+    mutate(B_mean_g_m2_DW = case_when(modelgroup=="ZC1_EUP" ~ B_mean_g_m2_WW / DW_to_WW_ZC1_EUP,
+                                      modelgroup=="ZC2_AMP" ~ B_mean_g_m2_WW / DW_to_WW_ZC2_AMP,
+                                      modelgroup=="ZC3_DEC" ~ B_mean_g_m2_WW / DW_to_WW_ZC3_DEC,
+                                      modelgroup=="ZC4_CLG" ~ B_mean_g_m2_WW / DW_to_WW_ZC4_CLG,
+                                      modelgroup=="ZC5_CSM" ~ B_mean_g_m2_WW / DW_to_WW_ZC5_CSM,
+                                      modelgroup=="ZS1_JEL" ~ B_mean_g_m2_WW / DW_to_WW_ZG1_JEL,
+                                      modelgroup=="ZS2_CTH" ~ B_mean_g_m2_WW / DW_to_WW_ZG2_CTH,
+                                      modelgroup=="ZS3_CHA" ~ B_mean_g_m2_WW / DW_to_WW_ZG3_CHA,
+                                      modelgroup=="ZS4_LAR" ~ B_mean_g_m2_WW / DW_to_WW_ZG4_LAR,
+                                      modelgroup=="ZF1_ICH" ~ B_mean_g_m2_WW / DW_to_WW_ZF1_ICH,
+                                      modelgroup=="misc" ~ B_mean_g_m2_WW / DW_to_WW_zoop,
+                                      # else default
+                                      TRUE ~ B_mean_g_m2_WW / DW_to_WW_zoop
+                                 ))
+
+# join 
+avg_B_modelgroups_better = inner_join(avg_B_WW_modelgroups_better, avg_B_C_modelgroups_better, by = c("modelgroup"="modelgroup"))
+
+
+
+# ////////////////////////////////////////////////////////////////////
+# adjust for over-estimation due to deep water bias in samples
+# seasonal avg by species
+# ////////////////////////////////////////////////////////////////////
+# convert back from WW to DW at seasonal and species level
+# df_2_summary
+# using actual depths across domain get actual B using m3 conc
+df_depths <- read.csv(paste(path_depths, file_depths,sep=""))
+
+get_avg_depth_int <- function(m3) {
+    m2 = df_depths %>%
+    mutate(m2_int = depth * avg_tow_depth_perc * m3 * mg_to_g) %>%
+    summarise(m2_int_avg = round(mean(m2_int),digits=4)) %>% 
+    pull(m2_int_avg)
+    return(m2)
+}
+
+df_2_summary <- df_2_summary %>% rowwise() %>%
+  mutate(adj_DW_g_m2 = get_avg_depth_int(B_mean_mg_m3_DW)) %>%
+  mutate(adj_WW_g_m2 = get_avg_depth_int(B_mean_mg_m3_WW)) %>%
+  mutate(adj_C_g_m2 = get_avg_depth_int(B_mean_mg_m3_C))
+df_2_summary
+
+path = "C://Users//Greig//Sync//6. SSMSP Model//Model Greig//Data//4. Zooplankton//Zoop_Perryetal_2021//MODIFIED//"
+write.csv(df_2_summary,
+          file = file.path(path, "Zoopl_SofG_1996-2018_df_summary.csv"),
+          row.names = FALSE)
+```
+
+
+```{r}
+# cross chekcing and reporting survey summaries
+avg_B_modelgroups_better$crosscheckconversions = avg_B_modelgroups_better$B_mean_g_m2_WW / avg_B_modelgroups_better$B_mean_g_m2_DW 
+
+print("Dry Weight B total")
+avg_B_modelgroups %>% ungroup() %>% summarise(sum_B_DW = sum(B_mean_g_m2_DW))
+
+print("Wet Weight B total")
+avg_B_modelgroups %>% ungroup() %>% summarise(sum_B_WW = sum(B_mean_g_m2_WW))
+
+print("Carbon B total")
+avg_B_modelgroups %>% ungroup() %>% summarise(sum_B_C = sum(B_mean_g_m2_C))
+
+print("how many samples night")
+t = df_2_summary %>%
+ group_by(season) %>%
+ summarise(adj_WW_g_m2 = sum(adj_WW_g_m2))
+t
+
+print("how many samples night")
+t = df_2 %>%
+ group_by(Index, Twilight) %>%
+ summarise() 
+t %>% ungroup() %>% count(Twilight, sort = TRUE)
+
+print("net types")
+t = df_2 %>%
+ group_by(Index, Net_type) %>%
+ summarise() 
+t %>% ungroup() %>% count(Net_type, sort = TRUE)
+
+print("net types")
+t = df_2 %>%
+ group_by(Index, Net_type) %>%
+ summarise() 
+t %>% ungroup() %>% count(Net_type, sort = TRUE)
+
+print("tow depths")
+t = df_2 %>%
+ group_by(Index, Tow_start_depth.m.) %>%
+ summarise() 
+
+t %>% ungroup() %>% summarise(mean=mean(Tow_start_depth.m.), 
+                             max=max(Tow_start_depth.m.),
+                             min=min(Tow_start_depth.m.))
+
+print("mesh sizes")
+t = df_2 %>%
+ group_by(Index, Mesh_size.micro.m.) %>%
+ summarise() 
+
+t %>% ungroup() %>% summarise(mean=mean(Mesh_size.micro.m.), 
+                             max=max(Mesh_size.micro.m.),
+                             min=min(Mesh_size.micro.m.))
+
+df_2$tow_depth_range_prop = df_2$tow_depth_range / df_2$Bottom_depth.m.
+
+print("net types")
+t = df_2 %>%
+ group_by(Index, Net_type) %>%
+ summarise() 
+t %>% ungroup() %>% count(Net_type, sort = TRUE)
+
+print("mesh sizes")
+t = df_2 %>%
+ group_by(Index, Net_Diameter.m.) %>%
+ summarise() 
+
+t %>% ungroup() %>% summarise(mean=mean(Net_Diameter.m.), 
+                             max=max(Net_Diameter.m.),
+                             min=min(Net_Diameter.m.))
+
+print("samples by season")
+t = df_2 %>%
+ group_by(Index, season) %>%
+ summarise() 
+
+t %>% ungroup() %>% count(season)
+
+print("tow start depths that caught jellies")
+t = df_2 %>%
+ filter(Phylum=="Cnidaria")  %>%
+ select(Tow_start_depth.m.) %>%
+ summarise(mean_d = mean(Tow_start_depth.m.)) 
+t
+
+
+```
+
+```{r}
+#options(repr.plot.width=7, repr.plot.height=6)
+
+p_B_DW = avg_B_modelgroups_better %>%
+
+    filter(B_mean_g_m2_WW > 0.01 & modelgroup != "misc") %>%
+    ggplot(aes(area = B_mean_g_m2_DW, fill = modelgroup, 
+               label = paste(modelgroup,round(B_mean_g_m2_DW,digits=1),sep="\n"))) +
+    geom_treemap(show.legend = FALSE) + 
+    geom_treemap_text(
+         colour = "white",
+         place = "center",
+         size = 15) + #theme(legend.position = "bottom") +
+  theme(legend.position = "right", plot.title = element_text(hjust = 0.5)) +
+  labs(title="Dry Weight", fill = "Model Group")
+
+p_B_DW
+
+```
+```{r}
+#options(repr.plot.width=7, repr.plot.height=6)
+
+p_B_WW = avg_B_modelgroups_better %>%
+
+    filter(B_mean_g_m2_WW > 0.01 & modelgroup != "misc") %>%
+    ggplot(aes(area = B_mean_g_m2_WW, fill = modelgroup, label = paste(modelgroup,round(B_mean_g_m2_WW,digits=1),sep="\n"))) +
+    geom_treemap(show.legend = FALSE) + 
+    geom_treemap_text(
+         colour = "white",
+         place = "center",
+         size = 15) + 
+  theme(legend.position = "right", plot.title = element_text(hjust = 0.5)) + 
+  labs(title="Wet Weight", fill = "Model Group")
+p_B_WW
+```
+```{r}
+#options(repr.plot.width=7, repr.plot.height=6)
+
+p_B_C = avg_B_modelgroups_better %>%
+
+    filter(B_mean_g_m2_C > 0.001 & modelgroup != "misc") %>%
+    ggplot(aes(area = B_mean_g_m2_C, fill = modelgroup, label = paste(modelgroup,round(B_mean_g_m2_C,digits=1),sep="\n"))) +
+    geom_treemap(show.legend = FALSE) + 
+    geom_treemap_text(
+         colour = "white",
+         place = "center",
+         size = 15) + 
+  theme(legend.position = "right", plot.title = element_text(hjust = 0.5)) + 
+  labs(title="Carbon", fill = "Model Group")
+
+p_B_C
+
+```
+```{r, fig.width = 6, fig.height = 12}
+# combined plot
+#options(repr.plot.width=2, repr.plot.height=80)
+theme_set(theme_cowplot())
+p_B_all <- plot_grid(p_B_DW, p_B_WW, p_B_C, labels = "AUTO", ncol=1, nrow=3)
+
+p_B_all
+
+```
+```{r}
+ggsave("..//..//..//figs//Zoop_B_plots_perry.png", p_B_all, width = 6, height = 12)
+```
+
+FISH
+
+```{r}
+
+# fish Phylum Chordata
+#df_2 %>% filter(Phylum=="Chordata")
+df_2_summary_fish = df_2_summary %>% 
+                    arrange(desc(adj_DW_g_m2)) %>% 
+                    filter(Phylum=="Chordata" & adj_DW_g_m2 >= 2.034211e-10 & 
+                          Class!="Appendicularia")
+
+# Basic barplot
+p<-ggplot(data=df_2_summary_fish, 
+          aes(x=reorder(Genus_species,adj_DW_g_m2), 
+              y=adj_DW_g_m2, 
+              fill=Order)) +
+    geom_bar(stat="identity") +
+    scale_fill_brewer(palette="Paired") +
+    labs(title="Fish", x="Genus_species", y="DW 1996-2018 mt km-2")
+# note https://www.r-graph-gallery.com/38-rcolorbrewers-palettes.html
+
+# Horizontal bar plot
+p + coord_flip()
+
+# Leuroglossus schmidti = Northern Smoothtongue
+# Bathylagus milleri  = deep sea smelt / owlfish / 
+# Merluccius productus = hake
+```
+```{r}
+#df_2 %>% filter(Phylum=="Chordata")
+df_2_summary_chaet = df_2_summary %>% 
+                    arrange(desc(adj_DW_g_m2)) %>% 
+                    filter(Phylum=="Chaetognatha" & 
+                          Class!="Appendicularia")
+
+# Basic barplot
+p<-ggplot(data=df_2_summary_chaet, 
+          aes(x=reorder(Genus_species,adj_DW_g_m2), 
+              y=adj_DW_g_m2, 
+              fill=Order)) +
+    geom_bar(stat="identity") +
+    scale_fill_brewer(palette="Paired") +
+    labs(title="Chaetognaths", x="Genus_species", y="DW 1996-2018 mt km-2")
+# note https://www.r-graph-gallery.com/38-rcolorbrewers-palettes.html
+
+# Horizontal bar plot
+p + coord_flip()
+
+# Leuroglossus schmidti = Northern Smoothtongue
+# Bathylagus milleri  = deep sea smelt / owlfish / 
+# Merluccius productus = hake
+```
+```{r}
+df_2_summary_larvac = df_2_summary %>% 
+                    arrange(desc(adj_DW_g_m2)) %>% 
+                    filter(Class=="Appendicularia" & adj_DW_g_m2 >= 2.034211e-06)
+
+# Basic barplot
+p<-ggplot(data=df_2_summary_larvac, 
+          aes(x=reorder(Genus_species,adj_DW_g_m2), 
+              y=adj_DW_g_m2, 
+              fill=Order)) +
+    geom_bar(stat="identity") +
+    scale_fill_brewer(palette="Paired") +
+    labs(title="Larvaceans", x="Species", y="Mean Biomass (g DW m^2)")
+# note https://www.r-graph-gallery.com/38-rcolorbrewers-palettes.html
+
+# Horizontal bar plot
+p + coord_flip()
+
+# Leuroglossus schmidti = Northern Smoothtongue
+# Bathylagus milleri  = deep sea smelt / owlfish / 
+# Merluccius productus = hake
+```
+```{r}
+df_2_summary_jelly = df_2_summary %>% 
+                    arrange(desc(adj_DW_g_m2)) %>% 
+                    filter(Phylum=="Cnidaria" & adj_DW_g_m2 >= 2.034211e-02)
+
+# Basic barplot
+p<-ggplot(data=df_2_summary_jelly, 
+          aes(x=reorder(Genus_species,adj_DW_g_m2), 
+              y=adj_DW_g_m2, 
+              fill=Order)) +
+    geom_bar(stat="identity") +
+    scale_fill_brewer(palette="Paired") +
+    labs(title="Jellies", x="Genus_species", y="DW 1996-2018 mt km-2")
+# note https://www.r-graph-gallery.com/38-rcolorbrewers-palettes.html
+
+# Horizontal bar plot
+p + coord_flip()
+
+# Leuroglossus schmidti = Northern Smoothtongue
+# Bathylagus milleri  = deep sea smelt / owlfish / 
+# Merluccius productus = hake
+```
+```{r}
+df_2_summary_jelly = df_2_summary %>% 
+                    arrange(desc(adj_DW_g_m2)) %>% 
+                    filter(Phylum=="Cnidaria" & (Class =="Scyphozoa" | Family == "Aequoreidae"))
+
+# Basic barplot
+p<-ggplot(data=df_2_summary_jelly, 
+          aes(x=reorder(Genus_species,adj_DW_g_m2), 
+              y=adj_DW_g_m2, 
+              fill=Order)) +
+    geom_bar(stat="identity") +
+    scale_fill_brewer(palette="Paired") +
+    labs(title="Jellies", x="Genus_species", y="DW 1996-2018 mt km-2")
+# note https://www.r-graph-gallery.com/38-rcolorbrewers-palettes.html
+
+# Horizontal bar plot
+p + coord_flip()
+
+# Leuroglossus schmidti = Northern Smoothtongue
+# Bathylagus milleri  = deep sea smelt / owlfish / 
+# Merluccius productus = hake
+```
+```{r}
+df_2_summary_cteno = df_2_summary %>% 
+                    arrange(desc(adj_DW_g_m2)) %>% 
+                    filter(Phylum=="Ctenophora" )
+
+# Basic barplot
+p<-ggplot(data=df_2_summary_cteno, 
+          aes(x=reorder(Genus_species,adj_DW_g_m2), 
+              y=adj_DW_g_m2, 
+              fill=Order)) +
+    geom_bar(stat="identity") +
+    scale_fill_brewer(palette="Paired") +
+    labs(title="Ctenophora", x="Genus_species", y="DW 1996-2018 mt km-2")
+# note https://www.r-graph-gallery.com/38-rcolorbrewers-palettes.html
+
+# Horizontal bar plot
+p + coord_flip()
+```
+```{r}
+colnames(df_2)
+```
+
+```{r}
+# Summary by year mean
+df_2_yr_mean = df_2 %>% 
+    group_by(Year,Phylum,Class,Order,Family,Genus,Species,Genus_species) %>%
+    #group_by(Class,Order) %>%
+    # summing here because of presence-only bias
+    summarise(B_sum_g_m2_DW = sum(round(B_g_m2_DW, digits=3)),
+          #AdultBody_size_mg_mean = mean(round(AdultBody_size_mg, digits=2)),
+          AdultBody_size_mg_mean = mean(round(Average_biomass_per_individual.mg., digits=2)),
+          n_surv_yr = mean(count_surveys_yr), # i have to use a function here, mean is fine (same value after)
+          n_occurrences_yr = n()) %>%
+    mutate(B_mean_g_m2_DW = round(B_sum_g_m2_DW, digits=3) / n_occurrences_yr) %>%
+    distinct() %>%
+    arrange(desc(B_mean_g_m2_DW), .by_group = FALSE)
+    
+df_2_yr_mean
+```
+```{r}
+df_2_yr_mean_fish = df_2_yr_mean %>%
+    filter(Phylum=="Chordata" & Class!="Appendicularia")
+    #filter(Genus_species == "Leuroglossus.schmidti")
+    #dplyr::mutate(Fi__03mo = zoo::rollmean(Fish_B, k = 3, fill = NA),
+    #              Fi__06mo = zoo::rollmean(Fish_B, k = 6, fill = NA),
+    #              Fi__12mo = zoo::rollmean(Fish_B, k = 12, fill = NA)) %>% 
+    #pivot_longer(names_to = "rolling_mean_key", 
+    #             values_to = "rolling_mean_value",
+    #             cols = c(Fi__03mo,
+    #                     )) %>%
+
+
+df_2_yr_mean_allfishtogether = df_2_yr_mean_fish %>%
+    group_by(Year) %>%
+    summarise(B_DW_sum = sum(round(B_mean_g_m2_DW, digits=6)))
+
+ggplot(data=df_2_yr_mean_allfishtogether,aes(x=Year, y = B_DW_sum)) +
+    theme(legend.position="bottom") +
+    geom_line() 
+```
+```{r}
+df_2_yr_mean_euph = df_2_yr_mean %>%
+    filter(Family=="Euphausiidae")
+    #filter(Genus_species == "Leuroglossus.schmidti")
+    #dplyr::mutate(Fi__03mo = zoo::rollmean(Fish_B, k = 3, fill = NA),
+    #              Fi__06mo = zoo::rollmean(Fish_B, k = 6, fill = NA),
+    #              Fi__12mo = zoo::rollmean(Fish_B, k = 12, fill = NA)) %>% 
+    #pivot_longer(names_to = "rolling_mean_key", 
+    #             values_to = "rolling_mean_value",
+    #             cols = c(Fi__03mo,
+    #                     )) %>%
+
+
+df_2_yr_mean_alleuphstogether = df_2_yr_mean_euph %>%
+    group_by(Year) %>%
+    summarise(B_DW_sum = sum(round(B_mean_g_m2_DW, digits=6)))
+
+ggplot(data=df_2_yr_mean_alleuphstogether,aes(x=Year, y = B_DW_sum)) +
+    theme(legend.position="bottom") +
+    geom_line() 
+```
+
+
+```{r}
+ggplot(filter(df_2_yr_mean_euph, B_mean_g_m2_DW > 0.01), aes(fill=Genus_species, y=B_mean_g_m2_DW, x=Year)) + 
+    geom_bar(position="stack", stat="identity") +  
+    theme(legend.position="bottom")
+```
+```{r}
+
+##### SET THE FIELD (carbon, WW, DW)! ######
+
+# UNITS_FIELD = "adj_WW_g_m2"
+# UNITS_FIELD = "adj_DW_g_m2"
+UNITS_FIELD = "adj_C_g_m2"
+
+
+# 1. Filter to Euphausiids & set season order
+df_summary_grp <- df_2_summary %>%
+  filter(modelgroup == "ZC1-EUP") %>%
+  mutate(
+    season = factor(season, levels = c("winter", "spring", "summer", "fall"))
+  )
+
+# 2. Identify top four genera by total biomass
+top4_genera <- df_summary_grp %>%
+  group_by(Genus) %>%
+  summarise(
+    total_biomass = sum(.data[[UNITS_FIELD]], na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  slice_max(order_by = total_biomass, n = 4) %>%
+  pull(Genus)
+
+# 3. Lump all other genera into “Other”
+df_summary_grp <- df_summary_grp %>%
+  mutate(
+    GenusLumped = ifelse(Genus %in% top4_genera, as.character(Genus), "Other"),
+    GenusLumped = factor(GenusLumped, levels = c(top4_genera, "Other"))
+  )
+
+# 4. Plot stacked bars: top 4 + “Other”
+p_ZC1_EUP <- ggplot(
+  df_summary_grp %>% filter(.data[[UNITS_FIELD]] > 0.0),
+  aes(
+    x    = season,
+    y    = .data[[UNITS_FIELD]],
+    fill = GenusLumped
+  )
+) +
+  geom_bar(stat = "identity", position = "stack") +
+  theme(legend.position = "right") +
+  labs(
+    title = "Euphausiids",
+    x     = "Season",
+    y     = "Biomass (g C m⁻²)",
+    fill  = "Genus"
+  )
+
+p_ZC1_EUP
+```
+```{r}
+# df_summary_grp = df_2_summary %>%
+#     filter(modelgroup=="ZC2-AMP") %>%
+#     arrange(desc(UNITS_FIELD), .by_group = FALSE) %>%
+#     mutate(season = factor(season, levels=c("winter", "spring", "summer", "fall")))
+# 
+# 
+# p_ZC2_AMP <- ggplot(filter(df_summary_grp, UNITS_FIELD > 0.3), aes(fill=Genus, y=UNITS_FIELD, x=season)) + 
+#     geom_bar(position="stack", stat="identity") +  
+#     theme(legend.position="bottom") + 
+#     labs(title="Amphipods", y="Biomass", x = "Season", fill="Genus") + 
+#     theme(legend.position = "right")
+# p_ZC2_AMP
+
+
+
+
+# 1. Filter  set season order
+df_summary_grp <- df_2_summary %>%
+  filter(modelgroup == "ZC2-AMP") %>%
+  mutate(
+    season = factor(season, levels = c("winter", "spring", "summer", "fall"))
+  )
+
+# 2. Identify top four genera by total biomass
+top4_genera <- df_summary_grp %>%
+  group_by(Genus) %>%
+  summarise(
+    total_biomass = sum(.data[[UNITS_FIELD]], na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  slice_max(order_by = total_biomass, n = 4) %>%
+  pull(Genus)
+
+# 3. Lump all other genera into “Other”
+df_summary_grp <- df_summary_grp %>%
+  mutate(
+    GenusLumped = ifelse(Genus %in% top4_genera, as.character(Genus), "Other"),
+    GenusLumped = factor(GenusLumped, levels = c(top4_genera, "Other"))
+  )
+
+# 4. Plot stacked bars: top 4 + “Other”
+p_ZC2_AMP <- ggplot(
+  df_summary_grp %>% filter(.data[[UNITS_FIELD]] > 0.0),
+  aes(
+    x    = season,
+    y    = .data[[UNITS_FIELD]],
+    fill = GenusLumped
+  )
+) +
+  geom_bar(stat = "identity", position = "stack") +
+  theme(legend.position = "right") +
+  labs(
+    title = "Amphipods",
+    x     = "Season",
+    y     = "Biomass (g C m⁻²)",
+    fill  = "Genus"
+  )
+
+p_ZC2_AMP
+
+
+```
+```{r}
+
+# DECAPODS
+# 1. Filter & set season order
+df_summary_grp <- df_2_summary %>%
+  filter(modelgroup == "ZC3-DEC") %>%
+  mutate(
+    season = factor(season, levels = c("winter", "spring", "summer", "fall"))
+  )
+
+# 2. Identify top four genera by total biomass
+top4_genera <- df_summary_grp %>%
+  group_by(Genus) %>%
+  summarise(
+    total_biomass = sum(.data[[UNITS_FIELD]], na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  slice_max(order_by = total_biomass, n = 4) %>%
+  pull(Genus)
+
+# 3. Lump all other genera into “Other”
+df_summary_grp <- df_summary_grp %>%
+  mutate(
+    GenusLumped = ifelse(Genus %in% top4_genera, as.character(Genus), "Other"),
+    GenusLumped = factor(GenusLumped, levels = c(top4_genera, "Other"))
+  )
+
+# 4. Plot stacked bars: top 4 + “Other”
+p_ZC3_DEC <- ggplot(
+  df_summary_grp %>% filter(.data[[UNITS_FIELD]] > 0.0),
+  aes(
+    x    = season,
+    y    = .data[[UNITS_FIELD]],
+    fill = GenusLumped
+  )
+) +
+  geom_bar(stat = "identity", position = "stack") +
+  theme(legend.position = "right") +
+  labs(
+    title = "Decapods",
+    x     = "Season",
+    y     = "Biomass (g C m⁻²)",
+    fill  = "Genus"
+  )
+
+p_ZC3_DEC
+
+
+
+
+```
+```{r}
+# df_summary_grp = df_2_summary %>%
+#     filter(modelgroup=="ZC4-CLG") %>%
+#     arrange(desc(adj_WW_g_m2), .by_group = FALSE) %>%
+#     mutate(season = factor(season, levels=c("winter", "spring", "summer", "fall")))
+# 
+# p_ZC4_CLG <- ggplot(filter(df_summary_grp, adj_WW_g_m2 > 0.2), aes(fill=Genus, y=adj_WW_g_m2, x=season)) + 
+#     geom_bar(position="stack", stat="identity") +  
+#     theme(legend.position="bottom") + 
+#     labs(title="Copepods (Group I)", y="Biomass", x = "Season", fill="Genus") + 
+#     theme(legend.position = "right")
+
+
+
+# Copepods GRoup 1
+
+
+# 1. Filter  set season order
+df_summary_grp <- df_2_summary %>%
+  filter(modelgroup == "ZC4-CLG") %>%
+  mutate(
+    season = factor(season, levels = c("winter", "spring", "summer", "fall"))
+  )
+
+# 2. Identify top four genera by total biomass
+top4_genera <- df_summary_grp %>%
+  group_by(Genus) %>%
+  summarise(
+    total_biomass = sum(.data[[UNITS_FIELD]], na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  slice_max(order_by = total_biomass, n = 4) %>%
+  pull(Genus)
+
+# 3. Lump all other genera into “Other”
+df_summary_grp <- df_summary_grp %>%
+  mutate(
+    GenusLumped = ifelse(Genus %in% top4_genera, as.character(Genus), "Other"),
+    GenusLumped = factor(GenusLumped, levels = c(top4_genera, "Other"))
+  )
+
+# 4. Plot stacked bars: top 4 + “Other”
+p_ZC4_CLG <- ggplot(
+  df_summary_grp %>% filter(.data[[UNITS_FIELD]] > 0.0),
+  aes(
+    x    = season,
+    y    = .data[[UNITS_FIELD]],
+    fill = GenusLumped
+  )
+) +
+  geom_bar(stat = "identity", position = "stack") +
+  theme(legend.position = "right") +
+  labs(
+    title = "Copepods (Group I)",
+    x     = "Season",
+    y     = "Biomass (g C m⁻²)",
+    fill  = "Genus"
+  )
+
+p_ZC4_CLG
+
+```
+```{r}
+# df_summary_grp = df_2_summary %>%
+#     #filter(modelgroup=="ZC5-CSM") %>%
+#     filter((Order=="Calanoida" & Family!="Calanidae" & Family!="Eucalanidae") ) %>%
+#     arrange(desc(adj_WW_g_m2), .by_group = FALSE) %>%
+#     mutate(season = factor(season, levels=c("winter", "spring", "summer", "fall")))
+# 
+# p_ZC5_CSM_1 <- ggplot(filter(df_summary_grp, adj_WW_g_m2 > 0.4), aes(fill=Genus, y=adj_WW_g_m2, x=season)) + 
+#     geom_bar(position="stack", stat="identity") +  
+#     theme(legend.position="bottom") + 
+#     labs(title="Copepods (Group II)", y="Biomass", x = "Season", fill="Genus") + 
+#     theme(legend.position = "right")
+# p_ZC5_CSM_1
+
+
+
+# 1. Filter  set season order
+df_summary_grp <- df_2_summary %>%
+  filter(modelgroup == "ZC5-CSM") %>%
+  mutate(
+    season = factor(season, levels = c("winter", "spring", "summer", "fall"))
+  )
+
+# 2. Identify top four genera by total biomass
+top4_genera <- df_summary_grp %>%
+  group_by(Genus) %>%
+  summarise(
+    total_biomass = sum(.data[[UNITS_FIELD]], na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  slice_max(order_by = total_biomass, n = 4) %>%
+  pull(Genus)
+
+# 3. Lump all other genera into “Other”
+df_summary_grp <- df_summary_grp %>%
+  mutate(
+    GenusLumped = ifelse(Genus %in% top4_genera, as.character(Genus), "Other"),
+    GenusLumped = factor(GenusLumped, levels = c(top4_genera, "Other"))
+  )
+
+# 4. Plot stacked bars: top 4 + “Other”
+p_ZC5_CSM_1 <- ggplot(
+  df_summary_grp %>% filter(.data[[UNITS_FIELD]] > 0.0),
+  aes(
+    x    = season,
+    y    = .data[[UNITS_FIELD]],
+    fill = GenusLumped
+  )
+) +
+  geom_bar(stat = "identity", position = "stack") +
+  theme(legend.position = "right") +
+  labs(
+    title = "Copepods (Group II)",
+    x     = "Season",
+    y     = "Biomass (g C m⁻²)",
+    fill  = "Genus"
+  )
+
+p_ZC5_CSM_1
+
+
+```
+```{r}
+# df_summary_grp = df_2_summary %>%
+#     #filter(modelgroup=="ZC5-CSM_1") %>%
+#     filter((Class=="Ostracoda") & AdultBody_size_mg_mean < 0.201) %>%
+#     arrange(desc(adj_WW_g_m2), .by_group = FALSE) %>%
+#     mutate(season = factor(season, levels=c("winter", "spring", "summer", "fall")))
+# 
+# p_ZC5_CSM_2 <- ggplot(filter(df_summary_grp, adj_WW_g_m2 > 0.3), aes(fill=Genus, y=adj_WW_g_m2, x=season)) + 
+#     geom_bar(position="stack", stat="identity") +  
+#     theme(legend.position="bottom") + 
+#     labs(title="Ostracods", y="Biomass", x = "Season", fill="Genus") + 
+#     theme(legend.position = "right")
+# p_ZC5_CSM_2
+
+# 1. Filter  set season order
+df_summary_grp <- df_2_summary %>%
+  filter((Class=="Ostracoda") & AdultBody_size_mg_mean < 0.201)  %>%
+  mutate(
+    season = factor(season, levels = c("winter", "spring", "summer", "fall"))
+  )
+
+# 2. Identify top four genera by total biomass
+top4_genera <- df_summary_grp %>%
+  group_by(Genus) %>%
+  summarise(
+    total_biomass = sum(.data[[UNITS_FIELD]], na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  slice_max(order_by = total_biomass, n = 4) %>%
+  pull(Genus)
+
+# 3. Lump all other genera into “Other”
+df_summary_grp <- df_summary_grp %>%
+  mutate(
+    GenusLumped = ifelse(Genus %in% top4_genera, as.character(Genus), "Other"),
+    GenusLumped = factor(GenusLumped, levels = c(top4_genera, "Other"))
+  )
+
+# 4. Plot stacked bars: top 4 + “Other”
+p_ZC5_CSM_2 <- ggplot(
+  df_summary_grp %>% filter(.data[[UNITS_FIELD]] > 0.0),
+  aes(
+    x    = season,
+    y    = .data[[UNITS_FIELD]],
+    fill = GenusLumped
+  )
+) +
+  geom_bar(stat = "identity", position = "stack") +
+  theme(legend.position = "right") +
+  labs(
+    title = "Ostracods",
+    x     = "Season",
+    y     = "Biomass (g C m⁻²)",
+    fill  = "Genus"
+  )
+
+p_ZC5_CSM_2
+
+
+```
+```{r}
+# df_summary_grp = df_2_summary %>%
+#     filter(modelgroup=="ZS4-LAR") %>%
+#     arrange(desc(adj_WW_g_m2), .by_group = FALSE) %>%
+#     mutate(season = factor(season, levels=c("winter", "spring", "summer", "fall")))
+# 
+# p_ZS4_LAR <- ggplot(filter(df_summary_grp, adj_WW_g_m2 > 0), aes(fill=Genus, y=adj_WW_g_m2, x=season)) + 
+#     geom_bar(position="stack", stat="identity") +  
+#     theme(legend.position="bottom") + 
+#     labs(title="Appendicularians", y="Biomass", x = "Season", fill="Genus") + 
+#     theme(legend.position = "right")
+# p_ZS4_LAR
+
+
+# 1. Filter  set season order
+df_summary_grp <- df_2_summary %>%
+  filter(modelgroup == "ZS4-LAR") %>%
+  mutate(
+    season = factor(season, levels = c("winter", "spring", "summer", "fall"))
+  )
+
+# 2. Identify top four genera by total biomass
+top4_genera <- df_summary_grp %>%
+  group_by(Genus) %>%
+  summarise(
+    total_biomass = sum(.data[[UNITS_FIELD]], na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  slice_max(order_by = total_biomass, n = 4) %>%
+  pull(Genus)
+
+# 3. Lump all other genera into “Other”
+df_summary_grp <- df_summary_grp %>%
+  mutate(
+    GenusLumped = ifelse(Genus %in% top4_genera, as.character(Genus), "Other"),
+    GenusLumped = factor(GenusLumped, levels = c(top4_genera, "Other"))
+  )
+
+# 4. Plot stacked bars: top 4 + “Other”
+p_ZS4_LAR <- ggplot(
+  df_summary_grp %>% filter(.data[[UNITS_FIELD]] > 0.0),
+  aes(
+    x    = season,
+    y    = .data[[UNITS_FIELD]],
+    fill = GenusLumped
+  )
+) +
+  geom_bar(stat = "identity", position = "stack") +
+  theme(legend.position = "right") +
+  labs(
+    title = "Appendicularians",
+    x     = "Season",
+    y     = "Biomass (g C m⁻²)",
+    fill  = "Genus"
+  )
+
+p_ZS4_LAR
+
+```
+```{r}
+# df_summary_grp = df_2_summary %>%
+#     filter(Phylum=="Chaetognatha") %>%
+#     arrange(desc(adj_WW_g_m2), .by_group = FALSE) %>%
+#     mutate(season = factor(season, levels=c("winter", "spring", "summer", "fall")))
+# 
+# p_ZS3_CHA_1 <- ggplot(filter(df_summary_grp, adj_WW_g_m2 > 0.06), aes(fill=Genus, y=adj_WW_g_m2, x=season)) + 
+#     geom_bar(position="stack", stat="identity") +  
+#     theme(legend.position="bottom") + 
+#     labs(title="Chaetognaths", y="Biomass", x = "Season", fill="Genus") + 
+#     theme(legend.position = "right")
+# p_ZS3_CHA_1
+
+
+# 1. Filter  set season order
+df_summary_grp <- df_2_summary %>%
+  filter(Phylum=="Chaetognatha") %>%
+  mutate(
+    season = factor(season, levels = c("winter", "spring", "summer", "fall"))
+  )
+
+# 2. Identify top four genera by total biomass
+top4_genera <- df_summary_grp %>%
+  group_by(Genus) %>%
+  summarise(
+    total_biomass = sum(.data[[UNITS_FIELD]], na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  slice_max(order_by = total_biomass, n = 4) %>%
+  pull(Genus)
+
+# 3. Lump all other genera into “Other”
+df_summary_grp <- df_summary_grp %>%
+  mutate(
+    GenusLumped = ifelse(Genus %in% top4_genera, as.character(Genus), "Other"),
+    GenusLumped = factor(GenusLumped, levels = c(top4_genera, "Other"))
+  )
+
+# 4. Plot stacked bars: top 4 + “Other”
+p_ZS3_CHA_1 <- ggplot(
+  df_summary_grp %>% filter(.data[[UNITS_FIELD]] > 0.0),
+  aes(
+    x    = season,
+    y    = .data[[UNITS_FIELD]],
+    fill = GenusLumped
+  )
+) +
+  geom_bar(stat = "identity", position = "stack") +
+  theme(legend.position = "right") +
+  labs(
+    title = "Chaetognaths",
+    x     = "Season",
+    y     = "Biomass (g C m⁻²)",
+    fill  = "Genus"
+  )
+
+p_ZS3_CHA_1
+
+```
+```{r}
+# 
+# df_summary_grp = df_2_summary %>%
+#     filter(Class=="Gastropoda") %>%
+#     arrange(desc(adj_WW_g_m2), .by_group = FALSE) %>%
+#     mutate(season = factor(season, levels=c("winter", "spring", "summer", "fall")))
+# 
+# p_PTE <- ggplot(filter(df_summary_grp, adj_WW_g_m2 > 0.2), aes(fill=Genus, y=adj_WW_g_m2, x=season)) + 
+#     geom_bar(position="stack", stat="identity") +  
+#     theme(legend.position="bottom") + 
+#     labs(title="Gastropods", y="Biomass", x = "Season", fill="Genus") + 
+#     theme(legend.position = "right")
+# p_PTE
+
+
+# 1. Filter  set season order
+df_summary_grp <- df_2_summary %>%
+  filter(Class=="Gastropoda") %>%
+  mutate(
+    season = factor(season, levels = c("winter", "spring", "summer", "fall"))
+  )
+
+# 2. Identify top four genera by total biomass
+top4_genera <- df_summary_grp %>%
+  group_by(Genus) %>%
+  summarise(
+    total_biomass = sum(.data[[UNITS_FIELD]], na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  slice_max(order_by = total_biomass, n = 4) %>%
+  pull(Genus)
+
+# 3. Lump all other genera into “Other”
+df_summary_grp <- df_summary_grp %>%
+  mutate(
+    GenusLumped = ifelse(Genus %in% top4_genera, as.character(Genus), "Other"),
+    GenusLumped = factor(GenusLumped, levels = c(top4_genera, "Other"))
+  )
+
+# 4. Plot stacked bars: top 4 + “Other”
+p_PTE <- ggplot(
+  df_summary_grp %>% filter(.data[[UNITS_FIELD]] > 0.0),
+  aes(
+    x    = season,
+    y    = .data[[UNITS_FIELD]],
+    fill = GenusLumped
+  )
+) +
+  geom_bar(stat = "identity", position = "stack") +
+  theme(legend.position = "right") +
+  labs(
+    title = "Gastropods",
+    x     = "Season",
+    y     = "Biomass (g C m⁻²)",
+    fill  = "Genus"
+  )
+
+p_PTE
+
+
+```
+```{r}
+# df_summary_grp = df_2_summary %>%
+#     filter(Class=="Polychaeta") %>%
+#     arrange(desc(adj_WW_g_m2), .by_group = FALSE) %>%
+#     mutate(season = factor(season, levels=c("winter", "spring", "summer", "fall")))
+# 
+# p_ZS3_CHA_2 <- ggplot(filter(df_summary_grp, adj_WW_g_m2 > 0.3), aes(fill=Genus, y=adj_WW_g_m2, x=season)) + 
+#     geom_bar(position="stack", stat="identity") +  
+#     theme(legend.position="bottom") + 
+#     labs(title="Polychaetes", y="Biomass", x = "Season", fill="Genus") + 
+#     theme(legend.position = "right")
+# p_ZS3_CHA_2
+# 
+
+
+# 1. Filter  set season order
+df_summary_grp <- df_2_summary %>%
+  filter(Class=="Polychaeta") %>%
+  mutate(
+    season = factor(season, levels = c("winter", "spring", "summer", "fall"))
+  )
+
+# 2. Identify top four genera by total biomass
+top4_genera <- df_summary_grp %>%
+  group_by(Genus) %>%
+  summarise(
+    total_biomass = sum(.data[[UNITS_FIELD]], na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  slice_max(order_by = total_biomass, n = 4) %>%
+  pull(Genus)
+
+# 3. Lump all other genera into “Other”
+df_summary_grp <- df_summary_grp %>%
+  mutate(
+    GenusLumped = ifelse(Genus %in% top4_genera, as.character(Genus), "Other"),
+    GenusLumped = factor(GenusLumped, levels = c(top4_genera, "Other"))
+  )
+
+# 4. Plot stacked bars: top 4 + “Other”
+p_ZS3_CHA_2 <- ggplot(
+  df_summary_grp %>% filter(.data[[UNITS_FIELD]] > 0.0),
+  aes(
+    x    = season,
+    y    = .data[[UNITS_FIELD]],
+    fill = GenusLumped
+  )
+) +
+  geom_bar(stat = "identity", position = "stack") +
+  theme(legend.position = "right") +
+  labs(
+    title = "Polychaetes",
+    x     = "Season",
+    y     = "Biomass (g C m⁻²)",
+    fill  = "Genus"
+  )
+
+p_ZS3_CHA_2
+
+
+```
+```{r}
+# df_summary_grp = df_2_summary %>%
+#     filter(Phylum=="Ctenophora") %>%
+#     arrange(desc(adj_WW_g_m2), .by_group = FALSE) %>%
+#     mutate(season = factor(season, levels=c("winter", "spring", "summer", "fall")))
+# 
+# p_ZS2_CTH_1 <- ggplot(filter(df_summary_grp, adj_WW_g_m2 > 0.009), aes(fill=Genus, y=adj_WW_g_m2, x=season)) +
+#     geom_bar(position="stack", stat="identity") +
+#     theme(legend.position="bottom") +
+#     labs(title="Ctenophores", y="Biomass", x = "Season", fill="Genus") +
+#     theme(legend.position = "right")
+# p_ZS2_CTH_1
+
+
+# 1. Filter  set season order
+df_summary_grp <- df_2_summary %>%
+  filter(Phylum=="Ctenophora") %>%
+  mutate(
+    season = factor(season, levels = c("winter", "spring", "summer", "fall"))
+  )
+
+# 2. Identify top four genera by total biomass
+top4_genera <- df_summary_grp %>%
+  group_by(Genus) %>%
+  summarise(
+    total_biomass = sum(.data[[UNITS_FIELD]], na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  slice_max(order_by = total_biomass, n = 4) %>%
+  pull(Genus)
+
+# 3. Lump all other genera into “Other”
+df_summary_grp <- df_summary_grp %>%
+  mutate(
+    GenusLumped = ifelse(Genus %in% top4_genera, as.character(Genus), "Other"),
+    GenusLumped = factor(GenusLumped, levels = c(top4_genera, "Other"))
+  )
+
+# 4. Plot stacked bars: top 4 + “Other”
+p_ZS2_CTH_1 <- ggplot(
+  df_summary_grp %>% filter(.data[[UNITS_FIELD]] > 0.0),
+  aes(
+    x    = season,
+    y    = .data[[UNITS_FIELD]],
+    fill = GenusLumped
+  )
+) +
+  geom_bar(stat = "identity", position = "stack") +
+  theme(legend.position = "right") +
+  labs(
+    title = "Ctenophores",
+    x     = "Season",
+    y     = "Biomass (g C m⁻²)",
+    fill  = "Genus"
+  )
+
+p_ZS2_CTH_1
+
+
+
+```
+```{r}
+# df_summary_grp = df_2_summary %>%
+#     filter(Phylum=="Cnidaria" & Class=="Hydrozoa" & Family!="Aequoreidae") %>%
+#     arrange(desc(adj_WW_g_m2), .by_group = FALSE) %>%
+#     mutate(season = factor(season, levels=c("winter", "spring", "summer", "fall")))
+# 
+# p_ZS2_CTH_2 <- ggplot(filter(df_summary_grp, adj_WW_g_m2 > 0.6), aes(fill=Genus, y=adj_WW_g_m2, x=season)) + 
+#     geom_bar(position="stack", stat="identity") +  
+#     theme(legend.position="bottom") + 
+#     labs(title="Small Hydrozoans", y="Biomass", x = "Season", fill="Genus") + 
+#     theme(legend.position = "right")
+# p_ZS2_CTH_2
+
+
+# 1. Filter  set season order
+df_summary_grp <- df_2_summary %>%
+   filter(Phylum=="Cnidaria" & Class=="Hydrozoa" & Family!="Aequoreidae") %>%
+  mutate(
+    season = factor(season, levels = c("winter", "spring", "summer", "fall"))
+  )
+
+# 2. Identify top four genera by total biomass
+top4_genera <- df_summary_grp %>%
+  group_by(Genus) %>%
+  summarise(
+    total_biomass = sum(.data[[UNITS_FIELD]], na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  slice_max(order_by = total_biomass, n = 4) %>%
+  pull(Genus)
+
+# 3. Lump all other genera into “Other”
+df_summary_grp <- df_summary_grp %>%
+  mutate(
+    GenusLumped = ifelse(Genus %in% top4_genera, as.character(Genus), "Other"),
+    GenusLumped = factor(GenusLumped, levels = c(top4_genera, "Other"))
+  )
+
+# 4. Plot stacked bars: top 4 + “Other”
+p_ZS2_CTH_2 <- ggplot(
+  df_summary_grp %>% filter(.data[[UNITS_FIELD]] > 0.0),
+  aes(
+    x    = season,
+    y    = .data[[UNITS_FIELD]],
+    fill = GenusLumped
+  )
+) +
+  geom_bar(stat = "identity", position = "stack") +
+  theme(legend.position = "right") +
+  labs(
+    title = "Small Hydrozoans",
+    x     = "Season",
+    y     = "Biomass (g C m⁻²)",
+    fill  = "Genus"
+  )
+
+p_ZS2_CTH_2
+
+```
+```{r}
+# df_summary_grp = df_2_summary %>%
+#     filter(modelgroup=="ZS1-JEL") %>%
+#     arrange(desc(adj_WW_g_m2), .by_group = FALSE) %>%
+#     mutate(season = factor(season, levels=c("winter", "spring", "summer", "fall")))
+# 
+# p_ZS1_JEL <- ggplot(filter(df_summary_grp, adj_WW_g_m2 > 0.03), aes(fill=Genus, y=adj_WW_g_m2, x=season)) + 
+#     geom_bar(position="stack", stat="identity") +  
+#     theme(legend.position="bottom") + 
+#     labs(title="Large Jellyfish", y="Biomass", x = "Season", fill="Genus") + 
+#     scale_x_discrete(drop = FALSE) +
+#     theme(legend.position = "right")
+# p_ZS1_JEL
+
+
+# 1. Filter  set season order
+df_summary_grp <- df_2_summary %>%
+    filter(modelgroup=="ZS1-JEL") %>%
+  mutate(
+    season = factor(season, levels = c("winter", "spring", "summer", "fall"))
+  )
+
+# 2. Identify top four genera by total biomass
+top4_genera <- df_summary_grp %>%
+  group_by(Genus) %>%
+  summarise(
+    total_biomass = sum(.data[[UNITS_FIELD]], na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  slice_max(order_by = total_biomass, n = 4) %>%
+  pull(Genus)
+
+# 3. Lump all other genera into “Other”
+df_summary_grp <- df_summary_grp %>%
+  mutate(
+    GenusLumped = ifelse(Genus %in% top4_genera, as.character(Genus), "Other"),
+    GenusLumped = factor(GenusLumped, levels = c(top4_genera, "Other"))
+  )
+
+# 4. Plot stacked bars: top 4 + “Other”
+p_ZS1_JEL <- ggplot(
+  df_summary_grp %>% filter(.data[[UNITS_FIELD]] > 0.0),
+  aes(
+    x    = season,
+    y    = .data[[UNITS_FIELD]],
+    fill = GenusLumped
+  )
+) +
+  geom_bar(stat = "identity", position = "stack") +
+  theme(legend.position = "right") +
+  labs(
+    title = "Large Jellyfish",
+    x     = "Season",
+    y     = "Biomass (g C m⁻²)",
+    fill  = "Genus"
+  )
+
+p_ZS1_JEL
+
+
+```
+```{r}
+# df_summary_grp = df_2_summary %>%
+#     filter(modelgroup=="ZF1-ICH") %>%
+#     arrange(desc(adj_WW_g_m2), .by_group = FALSE) %>%
+#     mutate(season = factor(season, levels=c("winter", "spring", "summer", "fall")))
+# 
+# p_ZF1_ICH <- ggplot(filter(df_summary_grp, adj_WW_g_m2 > 0.03), aes(fill=Genus, y=adj_WW_g_m2, x=season)) + 
+#     geom_bar(position="stack", stat="identity") +  
+#     theme(legend.position="bottom") + 
+#     labs(title="Ichthyoplankton", y="Biomass", x = "Season", fill="Genus") + 
+#     scale_x_discrete(drop = FALSE) +
+#     theme(legend.position = "right")
+# p_ZF1_ICH
+
+
+# 1. Filter  set season order
+df_summary_grp <- df_2_summary %>%
+    filter(modelgroup=="ZF1-ICH") %>%
+  mutate(
+    season = factor(season, levels = c("winter", "spring", "summer", "fall"))
+  )
+
+# 2. Identify top four genera by total biomass
+top4_genera <- df_summary_grp %>%
+  group_by(Genus) %>%
+  summarise(
+    total_biomass = sum(.data[[UNITS_FIELD]], na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  slice_max(order_by = total_biomass, n = 4) %>%
+  pull(Genus)
+
+# 3. Lump all other genera into “Other”
+df_summary_grp <- df_summary_grp %>%
+  mutate(
+    GenusLumped = ifelse(Genus %in% top4_genera, as.character(Genus), "Other"),
+    GenusLumped = factor(GenusLumped, levels = c(top4_genera, "Other"))
+  )
+
+# 4. Plot stacked bars: top 4 + “Other”
+p_ZF1_ICH <- ggplot(
+  df_summary_grp %>% filter(.data[[UNITS_FIELD]] > 0.0),
+  aes(
+    x    = season,
+    y    = .data[[UNITS_FIELD]],
+    fill = GenusLumped
+  )
+) +
+  geom_bar(stat = "identity", position = "stack") +
+  theme(legend.position = "right") +
+  labs(
+    title = "Ichthyoplankton",
+    x     = "Season",
+    y     = "Biomass (g C m⁻²)",
+    fill  = "Genus"
+  )
+
+p_ZF1_ICH
+
+
+```
+```{r}
+
+# using 'cowplot' lib
+theme_set(theme_cowplot())
+options(repr.plot.width=12, repr.plot.height=10)
+p_grd_crus <- plot_grid(p_ZC1_EUP, p_ZC2_AMP, p_ZC3_DEC, p_ZC4_CLG, p_ZC5_CSM_1, p_ZC5_CSM_2, labels = "AUTO", ncol=2)
+
+p_grd_crus
+
+
+# by default ggsave will use the last plot, but it's safer to specify:
+ggsave(
+  filename = "..//..//..//figs//crustacean_seasonal_biomass_C_g_m2.png",  # or .pdf, .tiff, etc.
+  plot     = p_grd_crus,
+  width    = 12,     # in inches
+  height   = 10,     # in inches
+  units    = "in",
+  dpi      = 300
+)
+
+# # 2) Or using cowplot's save_plot() --------------------------------
+# cowplot::save_plot(
+#   filename    = "..//crustacean_seasonal_biomass.png",
+#   plot        = p_grd_crus,
+#   base_width  = 12,  # inches
+#   base_height = 10,  # inches
+#   dpi         = 300
+# )
+```
+```{r}
+p_grd_soft <- plot_grid(p_ZS1_JEL, p_ZS2_CTH_1, p_ZS2_CTH_2, p_ZS3_CHA_1, p_ZS3_CHA_2, p_PTE, p_ZS4_LAR, 
+          p_ZF1_ICH, labels = "AUTO", ncol=2)
+
+p_grd_soft
+
+# by default ggsave will use the last plot, but it's safer to specify:
+ggsave(
+  filename = "..//..//..//figs//soft_jelly_biomass_c_g_m2.png",  # or .pdf, .tiff, etc.
+  plot     = p_grd_soft,
+  width    = 12,     # in inches
+  height   = 10,     # in inches
+  units    = "in",
+  dpi      = 300
+)
+
+```
+```{r}
+df_2_summary %>% filter(modelgroup=="ZC4-CLG") %>% ungroup %>% 
+summarise(mean_mg_body = mean(AdultBody_size_mg_mean))
+
+df_2_summary %>% filter((Order=="Calanoida" & Family!="Calanidae" & Family!="Eucalanidae")) %>% ungroup %>% 
+summarise(mean_mg_body = mean(AdultBody_size_mg_mean))
+
+df_2_summary %>% filter(modelgroup=="ZC3-DEC") %>% ungroup %>% 
+summarise(mean_mg_body = mean(AdultBody_size_mg_mean))
+
+df_2_summary %>% filter(modelgroup=="ZS2-CTH") %>% ungroup %>% 
+summarise(mean_mg_body = mean(AdultBody_size_mg_mean))
+
+df_2_summary %>% filter(Phylum=="Ctenophora") %>% ungroup %>% 
+summarise(mean_mg_body = mean(AdultBody_size_mg_mean))
+
+df_2_summary %>% filter(modelgroup=="ZC2-AMP") %>% ungroup %>% 
+summarise(mean_mg_body = mean(AdultBody_size_mg_mean))
+
+df_2_summary %>% filter(modelgroup=="ZC1-EUP") %>% ungroup %>% 
+summarise(mean_mg_body = mean(AdultBody_size_mg_mean))
+
+df_2_summary %>% filter(Genus=="Oikopleura") %>% ungroup %>% 
+summarise(mean_mg_body = mean(AdultBody_size_mg_mean))
+
+df_2_summary %>% filter(modelgroup=="ZS2-CTH") %>% ungroup %>% 
+summarise(mean_mg_body = mean(AdultBody_size_mg_mean))
+
+df_2_summary %>% filter(modelgroup=="ZC4-CLG") %>% ungroup %>% 
+summarise(mean_mg_body = mean(AdultBody_size_mg_mean))
+
+df_2_summary %>% filter(modelgroup=="ZC5-CSM") %>% ungroup %>% 
+summarise(mean_mg_body = mean(AdultBody_size_mg_mean))
+```
+```{r}
+ggplot(filter(df_2_yr_mean_fish, Genus_species != "Bathylagus.*sp."), aes(fill=Genus_species, y=B_mean_g_m2_DW, x=Year)) + 
+    geom_bar(position="stack", stat="identity") +  
+    theme(legend.position="bottom")
+```
+```{r}
+df_2_seasyr_specieslev %>% filter(Genus_species == "Bathylagus.*sp.")
+```
+```{r}
+# grab just herring to compare to Boldt's stats
+
+df_2_yr_mean_fish %>% 
+filter(Genus_species == "Clupeiformes.*sp." | Genus_species == "Clupea.pallasii") %>%
+group_by(Year) %>%
+arrange(Year) %>%
+summarize(B_mean_clup_WW = sum(B_mean_g_m2_DW * 5)) %>% 
+
+ggplot(y=B_mean_clup_WW, x=Year) + 
+geom_line(aes(y=B_mean_clup_WW, x=Year)) +
+    theme(legend.position="bottom")
+# 
+```
+```{r}
+df_2_yr_mean_fish %>% filter(Genus == "Clupeiformes" | Genus == "Clupea") 
+```
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
