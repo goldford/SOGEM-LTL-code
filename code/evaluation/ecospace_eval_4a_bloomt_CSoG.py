@@ -27,7 +27,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error
 import matplotlib
 matplotlib.use('TkAgg')
 
-from helpers import (
+from helpers_cartopy import (
     read_sdomains, find_nearest_point, find_bloom_doy,
     buildSortableString
 )
@@ -470,7 +470,7 @@ def plot_bloom_comparison(
     ax.axhspan(
         lower_bound,
         upper_bound,
-        facecolor='lightgrey',
+        facecolor='grey',
         alpha=0.25,
         zorder=0
     )

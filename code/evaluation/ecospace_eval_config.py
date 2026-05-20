@@ -20,7 +20,7 @@ from typing import Dict, List
 # -------------------------------------------
 ECOSPACE_SC = "SC300"
 ECOSPACE_SC_FULL = "SC300"
-<<<<<<< HEAD
+
 ECOPATH_F_NM = "SOGEM-LTL_ewe6_7_18858_v19"
 ECOPATH_RAW_OUT_P = "..//..//..//..//SOGEM-LTL-data//data//model_out_raw"
 ECOSPACE_RAW_DIR = f"{ECOPATH_RAW_OUT_P}//{ECOPATH_F_NM}//Ecospace_{ECOSPACE_SC_FULL}//asc//"
@@ -33,13 +33,7 @@ ECOSPACE_MAP_F = "Ecospace_grid_20210208_rowscols.csv"
 REF_P = "..//..//..//SOGEM-LTL-data//data//reference"
 DOMAIN_P = REF_P
 NUTR_P =  REF_P + "//nutr//prepped_combined"
-=======
-ECOPATH_F_NM = "LTL_Carb_3day_ewe6_7_19295_v18_BigPC_ECOSPACEPARAMZ"
-ECOSPACE_RAW_DIR = f"C://Users//Greig//Documents//EwE output//{ECOPATH_F_NM}//Ecospace_{ECOSPACE_SC_FULL}//asc//"
 
-FIGS_P = "../../figs"
-EVALOUT_P = "../../data/evaluation"
->>>>>>> parent of 9d6dc1c0 (compressed, adjusted)
 
 ECOSPACE_RN_STR_YR = 1978
 ECOSPACE_RN_END_YR = 2018
@@ -51,14 +45,9 @@ ECOSPACE_RN_END_DA = 30
 NC_FILENAME = ECOSPACE_SC + "_" + str(ECOSPACE_RN_STR_YR) + "-" + str(ECOSPACE_RN_END_YR) + ".nc"
 
 # NC_PATH_OUT = "..//..//data//ecospace_out//"
-<<<<<<< HEAD
 NC_PATH_OUT = r"..//..//..//SOGEM-LTL-data//data//model_out_prepped//"
 ECOSPACE_P = NC_PATH_OUT
 NEMO_EWE_CSV = "..//..//..//SOGEM-LTL-data//data//basemap//Ecospace_grid_20210208_rowscols.csv"
-=======
-NC_PATH_OUT = r"C:/Users/Greig/Sync/PSF/EwE/Georgia Strait 2021/LTL_model/ECOSPACE_OUT/"
-NEMO_EWE_CSV = "..//..//data//basemap//Ecospace_grid_20210208_rowscols.csv"
->>>>>>> parent of 9d6dc1c0 (compressed, adjusted)
 
 DO_NC_CROSSCHECK = False # can be memory intesnive to crosscheck NC with ASC after (they always match anyway)
 
@@ -156,13 +145,9 @@ MW_GROUP_COLORS = {
     "Nano":    "#ff7f0e",
     "Other":   "#2ca02c",
 }
-<<<<<<< HEAD
 
 MW_DOMAIN_FP = "..//..//..//SOGEM-LTL-data//data/reference//analysis_domains_mcewan.yml"
 
-=======
-MW_DOMAIN_FP = "..//..//data/evaluation//analysis_domains_mcewan.yml"
->>>>>>> parent of 9d6dc1c0 (compressed, adjusted)
 MW_STATS_OUT = EVALOUT_P
 MW_FIGS_OUT  = FIGS_P
 
@@ -230,14 +215,9 @@ QU39_DO_ECOSPACE_MATCHING = True       # Perform Ecospace matching
 QU39_DOWNLOAD_SSC = False              # Download SSC ERDDAP files
 QU39_MATCH_SSC = True                  # Match existing SSC files
 
-<<<<<<< HEAD
 QU39_IN_P = r'..//..//..//SOGEM-LTL-data//data//reference//phyto//QU39//MODIFIED//QU39_joined.csv'
 QU39_OUT_P = r'..//..//..//SOGEM-LTL-data//data//reference//phyto//QU39//MODIFIED'
-=======
-QU39_IN_P = r'C:\Users\Greig\Sync\6. SSMSP Model\Model Greig\Data\28. Phytoplankton\Phyto Concent del Bel Belluz 2024 2016 - 2019\MODIFIED\QU39_joined.csv'
 
-QU39_OUT_P = r'C:\Users\Greig\Sync\6. SSMSP Model\Model Greig\Data\28. Phytoplankton\Phyto Concent del Bel Belluz 2024 2016 - 2019\MODIFIED'
->>>>>>> parent of 9d6dc1c0 (compressed, adjusted)
 QU39_MATCHED_OUT_F = 'QU39_joined_matchtoEcospace' # gets tagged w scen later
 
 SSC_DDWNLD_P = os.path.join(SSC_P, 'matched_QU39_dwnld')
@@ -253,13 +233,7 @@ QU39_INIT_DT_PLACEHOLDER = pd.to_datetime('1900-04-23 23:42')
 QU39_FILL_VAL = -999.9
 
 QU39_SSC_ECOSPACE_PF = (
-<<<<<<< HEAD
     r'..//..//..//SOGEM-LTL-data//data//reference//phyto//QU39//MODIFIED'
-=======
-    r'C:\Users\Greig\Sync\6. SSMSP Model\Model Greig\Data\28. Phytoplankton'
-    r'\Phyto Concent del Bel Belluz 2024 2016 - 2019\MODIFIED'
->>>>>>> parent of 9d6dc1c0 (compressed, adjusted)
-    r'\QU39_joined_matchtoEcospace_SSC_' + ECOSPACE_SC + '.csv'
 )
 
 QU39_INCLUDE_SSC = True
@@ -274,18 +248,13 @@ QU39_DO_HIST = False
 # -------------------------------------------
 # Prep 4 - B Timing
 # -------------------------------------------
-<<<<<<< HEAD
 BT_DOMAIN_CONFIG_PATH = "..//..//..//SOGEM-LTL-data//data/reference"
 BT_DOMAIN_FILE = "analysis_domains_suchy.yml"
 BT_SAT_MASK_PF = r'..//..//..//SOGEM-LTL-data//data/reference//suchy_ecospace_mask.nc'
-=======
-BT_DOMAIN_CONFIG_PATH = "C:/Users/Greig/Documents/github/Ecosystem-Model-Data-Framework/data/evaluation"
-BT_DOMAIN_FILE = "analysis_domains_suchy.yml"
-BT_SAT_MASK_PF = r'../../data/evaluation/suchy_ecospace_mask.nc'
->>>>>>> parent of 9d6dc1c0 (compressed, adjusted)
 
-BT_RECOMPUTE_BLOOM_TIMING_SAT = False  # Set to True to force recomputation as needed, saves time
-BT_RECOMPUTE_BLOOM_TIMING_C09 = False
+
+BT_RECOMPUTE_BLOOM_TIMING_SAT = True  # Set to True to force recomputation as needed, saves time
+BT_RECOMPUTE_BLOOM_TIMING_C09 = True
 
 BT_START_YEAR = 1980 # analysis years (exclude spinup?)
 BT_END_YEAR = 2018
@@ -329,7 +298,7 @@ BT_PCT_MAX_WINDOW_DAYS_C09 = 6
 
 BT_DO_NUTRIENTS = False # another script does this now (#9?)
 # OVERRIDE_REDFIELD = True # added by GO to help eval 2025-06-03
-BT_MIN_Y_TICK = 38
+BT_MIN_Y_TICK = 30
 
 BT_OVERLAY_ECOSIM = True
 BT_ECOSIM_SAT_CSV = os.path.join(
@@ -367,11 +336,7 @@ ZP_SHOW_ANOM_TOTAL_SINGLE = False
 
 Z_F_SEAS = "Zoopl_SofG_1996-2018_df_summary.csv" # this is output by long R script
 Z_F_TOWLEV = "Zooplankton_B_C_gm2_EWEMODELGRP_Wide_NEMO3daymatch.csv" # this is output by short one
-<<<<<<< HEAD
 Z_P_PREPPED = "..//..//..//SOGEM-LTL-data//data//reference//zoop/Zoop_Perryetal_2021/MODIFIED"
-=======
-Z_P_PREPPED = "C:/Users/Greig/Sync/6. SSMSP Model/Model Greig/Data/4. Zooplankton/Zoop_Perryetal_2021/MODIFIED"
->>>>>>> parent of 9d6dc1c0 (compressed, adjusted)
 Z_F_MATCH = f"Zooplankton_matched_to_model_out_{ECOSPACE_SC}.csv" # ecospace matched to zoop data
 
 # USER SETTING: choose one season and plot type ('bar' or 'line')
