@@ -20,8 +20,8 @@ from typing import Dict
 # General settings
 # =============================================================================
 
-SCENARIO = "SC218"
-ECOPATH_F_NM = "LTL_Carb_3day_ewe6_7_19295_v18_BigPC_ECOSPACEPARAMZ"
+SCENARIO = "SC300"
+ECOPATH_F_NM = "SOGEM-LTL_ewe6_7_18858_v19"
 
 YEAR_START_FULLRUN = 1978
 YEAR_END_FULLRUN = 2018
@@ -33,19 +33,17 @@ MAX_TIMESTEPS = 120  # per year; for 3-day outputs, values beyond 120 are typica
 # ---- Paths (adjust as needed) ----
 ECOSIM_F_RAW_SINGLERUN = "biomass_monthly.csv"
 ECOSIM_F_RAW_HEADERN = 14
-<<<<<<< HEAD
 ECOSIM_RAW_DIR = rf"..//..//..//SOGEM-LTL-data//data//model_out_raw//{ECOPATH_F_NM}//ecosim_Ecosim_{SCENARIO}//{ECOSIM_F_RAW_SINGLERUN}"
 ECOSIM_PROCESSED_P = "..//..//..//SOGEM-LTL-data//data//model_out_prepped//"
-=======
-ECOSIM_RAW_DIR = rf"C://Users//Greig//Documents//EwE output//{ECOPATH_F_NM}//ecosim_Ecosim_{SCENARIO}//{ECOSIM_F_RAW_SINGLERUN}"
->>>>>>> parent of 9d6dc1c0 (compressed, adjusted)
 
-OUTPUT_DIR_EVAL = os.path.join("..", "..", "data", "evaluation")
-OUTPUT_DIR_FIGS = os.path.join("..", "..", "figs")
+
+OUTPUT_DIR_EVAL = rf"..//..//..//SOGEM-LTL-data//data//evaluation//"
+OUTPUT_DIR_FIGS = "..//..//eval//figs"
 
 ECOSIM_F_PREPPED_SINGLERUN = os.path.join(OUTPUT_DIR_EVAL, f"ecosim_{SCENARIO}_onerun_B_dates_seasons.csv")
+NUTRIENTS_P = "..//..//..//SOGEM-LTL-data//data//reference//nutr//prepped_combined//"
 NUTRIENTS_F_PREPPED = os.path.join(
-    OUTPUT_DIR_EVAL,
+    NUTRIENTS_P,
     "nutrients_ios_csop_cast_depthint_0p1to20m.csv"
 )
 
@@ -211,7 +209,7 @@ N_FREE_INIT_MODE = "t0_preserve_total"   # {"config", "t0_preserve_total"}
 USE_N_MULT = True
 N_MULT_TYPE = "3day"  # {"seasonal", "monthly", "3day"}
 EWE_NUTR_LOADING_FILE = os.path.join(
-    "..", "..", "data", "forcing",
+    "..", "..", "..", "SOGEM-LTL-data", "data", "forcing",
     "ECOSIM_in_3day_vars_1980-2018_fromASC_202506",
     "ECOSIM_in_NEMO_varmixing_m_stdfilter_1980-2018.csv",
 )
@@ -303,11 +301,8 @@ NUTRIENT_DRAWDOWN_FRAC = 0.6  # unused (experimental)
 
 Z_F_SEAS = "Zoopl_SofG_1996-2018_df_summary.csv"
 Z_F_TOWLEV = "Zooplankton_B_C_gm2_EWEMODELGRP_Wide_NEMO3daymatch.csv"
-<<<<<<< HEAD
 Z_P_PREPPED = r"..//..//..//SOGEM-LTL-data//data//reference//zoop//Zoop_Perryetal_2021//MODIFIED"
-=======
-Z_P_PREPPED = r"C:/Users/Greig/Sync/6. SSMSP Model/Model Greig/Data/4. Zooplankton/Zoop_Perryetal_2021/MODIFIED"
->>>>>>> parent of 9d6dc1c0 (compressed, adjusted)
+
 
 Z_GROUP_MAP = {
     "ZF1-ICT": 4,

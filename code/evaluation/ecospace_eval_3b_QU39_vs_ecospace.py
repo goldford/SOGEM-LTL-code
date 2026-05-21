@@ -55,7 +55,7 @@ SHOW_PLTS = cfg.QU39_SHOW_PLTS
 SHOW_SSC_BXPLTS = cfg.QU39_SHOW_SSC_BXPLTS
 MODEL_RUN = cfg.ECOSPACE_SC
 INCLUDE_SSC = cfg.QU39_INCLUDE_SSC # IS THIS HOOKED UP?
-pathfile_QU39_SSC_Ecospace = cfg.QU39_SSC_ECOSPACE_PF
+pathfile_QU39_SSC_Ecospace = cfg.QU39_SSC_ECOSPACE_PF + "//QU39_joined_matchtoEcospace_" + MODEL_RUN + ".csv"
 figs_out_p = cfg.QU39_FIGS_OUT_P
 stats_out_p = cfg.QU39_STATS_OUT_P
 FILL_VALUE = cfg.QU39_FILL_VALUE
@@ -674,6 +674,7 @@ def run_qu39_eval() -> None:
     generate_panel = True  # toggle to enable combined 2x2 panel output
 
     print("Loading dataset...")
+    print(pathfile_QU39_SSC_Ecospace)
     df = pd.read_csv(pathfile_QU39_SSC_Ecospace)
     df['DateTime'] = pd.to_datetime(df['DateTime'], format='%Y-%m-%d %H:%M:%S')
     df = df[pd.to_datetime(df['closest_ecospace_time']).dt.year >= 1980]
@@ -880,7 +881,8 @@ def run_qu39_eval() -> None:
             stats_df[col] = stats_df[col].round(2)
 
     if 'N' in stats_df.columns:
-        stats_df['N'] = stats_df['N'].astype(int)
+        stats_df['N'] = stats_df['N'].replace([np.inf, -np.inf], np.nan)
+        stats_df['N'] = stats_df['N'].astype('Int64')
 
     stats_outfile = os.path.join(stats_out_p, f"ecospace_{MODEL_RUN}_QU39_ModelStats_ObsVsModel.csv")
     stats_df.to_csv(stats_outfile, index=False)

@@ -39,6 +39,7 @@ import ecospace_eval_config as cfg
 # ================================
 ECOSPACE_OUT_PATH = cfg.NC_PATH_OUT
 STATS_OUT_PATH = cfg.EVALOUT_P
+FIGS_OUT_P = cfg.FIGS_P
 DOMAIN_CONFIG_PATH = cfg.DOMAIN_P
 DOMAIN_FILE = cfg.BT_DOMAIN_FILE
 SAT_MASK_PF = cfg.BT_SAT_MASK_PF
@@ -213,7 +214,7 @@ def load_observation_bloom_dfs():
 # ================================
 
 def load_ecospace_dataset():
-    fname = f"{ECOSPACE_CODE}_{FILENM_STRT_YR}-{FILENM_END_YR}.nc"
+    fname = f"ecospace_{ECOSPACE_CODE}_{FILENM_STRT_YR}-{FILENM_END_YR}.nc"
     path = os.path.join(ECOSPACE_OUT_PATH, fname)
     return xr.open_dataset(path)
 
@@ -499,7 +500,7 @@ def plot_bloom_comparison(
     ax.grid(True)
     # ax.legend()
     plt.tight_layout()
-    plt.savefig('..//..//figs//' + filename)
+    plt.savefig(FIGS_OUT_P + "//" + filename)
     print("saved: " + filename)
     plt.show()
     plt.close()

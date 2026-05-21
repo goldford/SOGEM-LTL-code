@@ -42,7 +42,7 @@ ECOSPACE_RN_STR_DA = 2
 ECOSPACE_RN_END_MO = 12
 ECOSPACE_RN_END_DA = 30
 
-NC_FILENAME = ECOSPACE_SC + "_" + str(ECOSPACE_RN_STR_YR) + "-" + str(ECOSPACE_RN_END_YR) + ".nc"
+NC_FILENAME = "ecospace_" + ECOSPACE_SC + "_" + str(ECOSPACE_RN_STR_YR) + "-" + str(ECOSPACE_RN_END_YR) + ".nc"
 
 # NC_PATH_OUT = "..//..//data//ecospace_out//"
 NC_PATH_OUT = r"..//..//..//SOGEM-LTL-data//data//model_out_prepped//"
@@ -237,8 +237,8 @@ QU39_SSC_ECOSPACE_PF = (
 )
 
 QU39_INCLUDE_SSC = True
-QU39_FIGS_OUT_P = os.path.normpath("..//..//figs//") + os.sep
-QU39_STATS_OUT_P = os.path.normpath("..//..//data//evaluation//") + os.sep
+QU39_FIGS_OUT_P = os.path.normpath("..//..//eval//figs//") + os.sep
+QU39_STATS_OUT_P = os.path.normpath("..//..//..//SOGEM-LTL-data//data//evaluation//") + os.sep
 QU39_FILL_VALUE = -999
 
 QU39_DO_HIST = False
@@ -270,8 +270,8 @@ BT_USE_SAT_MASK_CO9 = True
 BT_C09_ROW = 100 # overridden by above!
 BT_C09_COL = 52
 
-BT_CSV_SUCHY_PF = f"..//..//data//evaluation//ecospace_bloom_timing_SSoG_{ECOSPACE_SC}.csv"
-BT_CSV_ALLEN_PF = f"..//..//data//evaluation//ecospace_bloom_timing_C09_{ECOSPACE_SC}.csv"
+BT_CSV_SUCHY_PF = f"..//..//..//SOGEM-LTL-data//data//evaluation//ecospace_bloom_timing_SSoG_{ECOSPACE_SC}.csv"
+BT_CSV_ALLEN_PF = f"..//..//..//SOGEM-LTL-data//data//evaluation//ecospace_bloom_timing_C09_{ECOSPACE_SC}.csv"
 
 # if multiple vars listed here, it will sum across them when computing anomalies, bloom timing etc!
 #OK with run 96 this is first time model fit has been okay with all pp groups
@@ -509,7 +509,8 @@ ZP_MODELONLY_ANOM_CSV   = f"ecospace_zoop_model_box_anom_{ZP_MODELONLY_SEASON}_{
 # =============================================================================
 
 # ---- Inputs ----
-NU_F_PREPPED = os.path.join(EVALOUT_P, "nutrients_ios_csop_combined_sampled.csv")
+NU_P = "..//..//..//SOGEM-LTL-data//data//reference//nutr//prepped_combined//"
+NU_F_PREPPED = os.path.join(NU_P, "nutrients_ios_csop_combined_sampled.csv")
 
 # Plot window (inclusive)
 NU_PLT_YR_ST = 2012

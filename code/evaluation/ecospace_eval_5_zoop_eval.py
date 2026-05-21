@@ -64,7 +64,7 @@ import ecospace_eval_config as cfg
 class Eval5Config:
     # INPUTS
     ecospace_code: str = cfg.ECOSPACE_SC
-    ecospace_nc_name: str = f"{cfg.ECOSPACE_SC}_{cfg.ECOSPACE_RN_STR_YR}-{cfg.ECOSPACE_RN_END_YR}.nc"
+    ecospace_nc_name: str = f"ecospace_{cfg.ECOSPACE_SC}_{cfg.ECOSPACE_RN_STR_YR}-{cfg.ECOSPACE_RN_END_YR}.nc"
 
     # PATHS
     NC_PATH_OUT: str = cfg.NC_PATH_OUT
