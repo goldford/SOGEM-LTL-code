@@ -1,0 +1,5 @@
+Label,Type,Count,Total,Proportion
+Satellite,Categorical Agreement,10,14,0.71
+C09,Categorical Agreement,17,39,0.44
+Satellite,Timing Window Overlap,2,14,0.14
+C09,Timing Window Overlap,16,39,0.41
