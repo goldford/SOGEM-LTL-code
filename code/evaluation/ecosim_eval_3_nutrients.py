@@ -749,7 +749,7 @@ def _plot_overlay(
     ax.set_xticks(month_ticks)
     ax.set_xticklabels(month_labels)
 
-
+    ax.set_ylim(0,8)
     ax.set_xlabel("Time of year")
     ax.set_ylabel("Free dissolved N inventory (g N m$^{-2}$)")
     ax.set_title("Surface-layer dissolved inorganic N evaluation")
