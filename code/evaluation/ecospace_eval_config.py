@@ -253,8 +253,8 @@ BT_DOMAIN_FILE = "analysis_domains_suchy.yml"
 BT_SAT_MASK_PF = r'..//..//..//SOGEM-LTL-data//data/reference//suchy_ecospace_mask.nc'
 
 
-BT_RECOMPUTE_BLOOM_TIMING_SAT = True  # Set to True to force recomputation as needed, saves time
-BT_RECOMPUTE_BLOOM_TIMING_C09 = True
+BT_RECOMPUTE_BLOOM_TIMING_SAT = False  # Set to True to force recomputation as needed, saves time
+BT_RECOMPUTE_BLOOM_TIMING_C09 = False
 
 BT_START_YEAR = 1980 # analysis years (exclude spinup?)
 BT_END_YEAR = 2018
