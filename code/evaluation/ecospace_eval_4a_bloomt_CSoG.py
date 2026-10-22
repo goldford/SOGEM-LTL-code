@@ -430,7 +430,8 @@ def plot_bloom_comparison(
     # observations
     ax.errorbar(
         df_obs['Year'], df_obs['Day of Year_Obs'],
-        yerr=4, fmt='s',
+        yerr=4 if label_obs == 'Satellite' else None,
+        fmt='s',
         markersize=2,
         label=label_obs,
         color='darkorange', capsize=3
