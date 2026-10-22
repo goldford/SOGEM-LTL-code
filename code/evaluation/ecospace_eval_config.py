@@ -248,6 +248,8 @@ QU39_DO_HIST = False
 # -------------------------------------------
 # Prep 4 - B Timing
 # -------------------------------------------
+BT_PLOT_LAYOUT = "panel"  # "panel" or "separate"
+
 BT_DOMAIN_CONFIG_PATH = "..//..//..//SOGEM-LTL-data//data/reference"
 BT_DOMAIN_FILE = "analysis_domains_suchy.yml"
 BT_SAT_MASK_PF = r'..//..//..//SOGEM-LTL-data//data/reference//suchy_ecospace_mask.nc'

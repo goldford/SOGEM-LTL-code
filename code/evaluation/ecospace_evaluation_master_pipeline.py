@@ -26,25 +26,17 @@ import ecospace_eval_5_zoop_eval as zp_eval
 
 
 
-<<<<<<< HEAD
 def run_ecospace_pipeline(run_prep=False,
-                          run_PPmult=True,
-                          run_seas_phyto=True,
-                          # run_match_phyto1=False,hellcou
-                          # run_eval_phyto1=False,
-=======
-def run_ecospace_pipeline(run_prep=True,
-                          run_PPmult=True,
-                          run_seas_phyto=True,
-                          run_match_phyto1=True,
-                          run_eval_phyto1=True,
->>>>>>> parent of 9d6dc1c0 (compressed, adjusted)
-                          run_match_phyto2=True,
-                          run_eval_phyto2=True,
+                          run_PPmult=False,
+                          run_seas_phyto=False,
+                          run_match_phyto1=False,
+                          run_eval_phyto1=False,
+                          run_match_phyto2=False,
+                          run_eval_phyto2=False,
                           run_eval_bt1=True,
-                          run_nutr1=True,
-                          run_nutr2=True,
-                          run_zp_eval=True):
+                          run_nutr1=False,
+                          run_nutr2=False,
+                          run_zp_eval=False):
     if run_prep:
         print("=== Running Data Prep Step ===")
         data_prep.run_ecospace_prep()

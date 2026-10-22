@@ -391,16 +391,17 @@ def _standardize_model_cols(df, doy_name):
             break
     return out
 
-
 def plot_bloom_comparison(
     df_model,
     df_obs,
     label_model="SOGEM-LTL 2D",
     label_obs="sat",
-    title="Bloom Timing Comparison",
+    title=None,
     filename="bloom_timing_plot.png",
     df_overlay=None,
     label_overlay="SOGEM-LTL 1-D",
+    ax=None,
+    panel_label=None,
 ):
     df_obs = standardize_columns(df_obs)
     df_model = _standardize_model_cols(df_model, "Day of Year_Model")
@@ -421,7 +422,10 @@ def plot_bloom_comparison(
     else:
         fig_w, fig_h = 6, 3
 
-    fig, ax = plt.subplots(figsize=(fig_w, fig_h))
+    standalone = ax is None
+
+    if standalone:
+        fig, ax = plt.subplots(figsize=(fig_w, fig_h))
 
     # observations
     ax.errorbar(
@@ -489,7 +493,17 @@ def plot_bloom_comparison(
 
     ax.set_xlabel("Year")
     ax.set_ylabel("Day of Year")
-    ax.set_title(title)
+    if title:
+        ax.set_title(title)
+
+    if panel_label is not None:
+        ax.text(
+            0.01, 0.98, panel_label,
+            transform=ax.transAxes,
+            ha='left', va='top',
+            fontsize=11, fontweight='bold'
+        )
+
     ax.set_ylim([MIN_Y_TICK, ymax + 10])
 
     if len(plot_years) > 0:
@@ -499,11 +513,14 @@ def plot_bloom_comparison(
 
     ax.grid(True)
     # ax.legend()
-    plt.tight_layout()
-    plt.savefig(FIGS_OUT_P + "//" + filename)
-    print("saved: " + filename)
-    plt.show()
-    plt.close()
+    if standalone:
+        fig.tight_layout()
+        fig.savefig(os.path.join(FIGS_OUT_P, filename), dpi=300)
+        print("saved: " + filename)
+        plt.show()
+        plt.close(fig)
+
+    return ax
 
 
 # ================================
@@ -825,23 +842,78 @@ def run_bt_eval() -> None:
         ecosim_c09_df = load_overlay_csv(cfg.BT_ECOSIM_C09_CSV)
 
     # Plot comparison with C09 1D model
-    plot_bloom_comparison(
-        bloom_df_C09, C09_df,
-        label_model="Ecospace", label_obs="C09 1D Model",
-        title=f"Bloom Timing: {SCENARIO} vs C09",
-        filename=f"ecospace_vs_C09_{SCENARIO}.png",
-        df_overlay=ecosim_c09_df,
-        label_overlay=cfg.BT_ECOSIM_LABEL,
-    )
 
-    plot_bloom_comparison(
-        bloom_df_sat, sat_df,
-        label_model="Ecospace", label_obs="Satellite",
-        title=f"Bloom Timing: {SCENARIO} vs Satellite",
-        filename=f"ecospace_vs_satell_{SCENARIO}.png",
-        df_overlay=ecosim_sat_df,
-        label_overlay=cfg.BT_ECOSIM_LABEL,
-    )
+    if cfg.BT_PLOT_LAYOUT == "panel":
+
+        fig, axes = plt.subplots(
+            nrows=2,
+            ncols=1,
+            figsize=(7.5, 7.5),
+            sharex=False,
+            constrained_layout=True
+        )
+
+        # Panel (a): Satellite comparison
+        plot_bloom_comparison(
+            bloom_df_sat, sat_df,
+            label_model="Ecospace",
+            label_obs="Satellite",
+            title=None,
+            df_overlay=ecosim_sat_df,
+            label_overlay=cfg.BT_ECOSIM_LABEL,
+            ax=axes[0],
+            panel_label="(a)",
+        )
+
+        # Panel (b): C09 comparison
+        plot_bloom_comparison(
+            bloom_df_C09, C09_df,
+            label_model="Ecospace",
+            label_obs="C09 1D Model",
+            title=None,
+            df_overlay=ecosim_c09_df,
+            label_overlay=cfg.BT_ECOSIM_LABEL,
+            ax=axes[1],
+            panel_label="(b)",
+        )
+
+        filename = f"ecospace_bloom_timing_panel_{SCENARIO}.png"
+        fig.savefig(
+            os.path.join(FIGS_OUT_P, filename),
+            dpi=300,
+            bbox_inches="tight"
+        )
+        print(f"saved: {filename}")
+        plt.show()
+        plt.close(fig)
+
+    elif cfg.BT_PLOT_LAYOUT == "separate":
+
+        plot_bloom_comparison(
+            bloom_df_C09, C09_df,
+            label_model="Ecospace",
+            label_obs="C09 1D Model",
+            title=f"Bloom Timing: {SCENARIO} vs C09",
+            filename=f"ecospace_vs_C09_{SCENARIO}.png",
+            df_overlay=ecosim_c09_df,
+            label_overlay=cfg.BT_ECOSIM_LABEL,
+        )
+
+        plot_bloom_comparison(
+            bloom_df_sat, sat_df,
+            label_model="Ecospace",
+            label_obs="Satellite",
+            title=f"Bloom Timing: {SCENARIO} vs Satellite",
+            filename=f"ecospace_vs_satell_{SCENARIO}.png",
+            df_overlay=ecosim_sat_df,
+            label_overlay=cfg.BT_ECOSIM_LABEL,
+        )
+
+    else:
+        raise ValueError(
+            "BT_PLOT_LAYOUT must be 'panel' or 'separate'"
+        )
+
 
     # Compute and print statistics
     stats_sat = evaluate_model(
