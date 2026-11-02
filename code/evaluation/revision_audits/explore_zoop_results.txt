@@ -1,0 +1,39 @@
+716 matched tows, 2000-2018, 99 stations
+Euphausiid x3 (Perry rule: daytime F/M/s3): median per-tow factor on ZC1 1.86 (day 2.31, night 1.00); total crustaceans x1.04 (median)
+  obs/model ratio, median per tow, Euphausiids             :   0.68   (with euph x3: 1.09)
+  obs/model ratio, median per tow, Amphipods               :   1.14
+  obs/model ratio, median per tow, Decapod larvae          :   1.14
+  obs/model ratio, median per tow, Large calanoids         :   1.50
+  obs/model ratio, median per tow, Small/medium calanoids  :   1.60
+  obs/model ratio, median per tow, Total crustaceans       :   1.55   (with euph x3: 1.70)
+
+Seasonal cycle: month of maximum median biomass (obs / model)
+  Total crustaceans        obs peak month  6, model  6; seasonal amplitude (max-min monthly median, log10) obs 0.76, model 0.41
+  Euphausiids              obs peak month  5, model  6; seasonal amplitude (max-min monthly median, log10) obs 1.23, model 0.56
+  Amphipods                obs peak month  6, model  8; seasonal amplitude (max-min monthly median, log10) obs 0.72, model 0.38
+  Decapod larvae           obs peak month  5, model 11; seasonal amplitude (max-min monthly median, log10) obs 2.11, model 0.45
+  Large calanoids          obs peak month  6, model  6; seasonal amplitude (max-min monthly median, log10) obs 0.75, model 0.50
+  Small/medium calanoids   obs peak month  9, model  6; seasonal amplitude (max-min monthly median, log10) obs 0.81, model 0.41
+
+What explains per-tow log10(obs/model)? OLS with factors; R2 lost when each is dropped
+  Total crustaceans        full R2 0.56; unique: Year 0.04, Month 0.04, Station 0.28, night 0.00, lrng 0.01, net 0.00
+  Euphausiids              full R2 0.44; unique: Year 0.04, Month 0.11, Station 0.19, night 0.01, lrng 0.00, net 0.02
+  Amphipods                full R2 0.61; unique: Year 0.02, Month 0.04, Station 0.20, night 0.00, lrng 0.01, net 0.00
+  Decapod larvae           full R2 0.56; unique: Year 0.05, Month 0.25, Station 0.18, night 0.00, lrng 0.00, net 0.01
+  Large calanoids          full R2 0.63; unique: Year 0.04, Month 0.04, Station 0.13, night 0.00, lrng 0.01, net 0.00
+  Small/medium calanoids   full R2 0.57; unique: Year 0.03, Month 0.05, Station 0.15, night 0.00, lrng 0.01, net 0.00
+  period 2000-07: median obs/model (total) 1.08; obs median 3.32, model median 2.31 g C m-2
+  period 2008-18: median obs/model (total) 1.60; obs median 4.83, model median 3.46 g C m-2
+
+Linear trend 2008-2018 (z units / decade): Perry +0.38, obs GAM -0.18, model +0.09
+Linear trend 2000-2007: Perry -4.04, obs GAM -4.64, model +0.56
+  Perry_TotBiom vs model window: raw r -0.35, linear-detrended r -0.29, first-difference r +0.07
+  ours_obs_GAMannual vs model window: raw r -0.17, linear-detrended r -0.14, first-difference r +0.15
+
+Mean composition obs vs model: Euphausiids 23%/22%, Amphipods 23%/28%, Decapod larvae 6%/5%, Large calanoids 25%/21%, Small/medium calanoids 23%/23%
+
+Effect of Perry's euphausiid x3 on interannual agreement (Perry-method annual anomaly, tow-matched):
+  ZC1 as is    r = -0.05 [-0.49, +0.41]
+  ZC1 x3       r = -0.27 [-0.65, +0.21]
+  Total as is  r = +0.18 [-0.30, +0.59]
+  Total x3     r = -0.09 [-0.52, +0.38]

@@ -1,0 +1,37 @@
+season,correction,method,r
+Winter,none (log both),residual-then-average,0.39185690145155794
+Winter,month FE,residual-then-average,0.32601927880954384
+Winter,month FE,joint year+season fit,0.3380961126081837
+Winter,linear DOY (1 df),residual-then-average,0.2727255977649574
+Winter,linear DOY (1 df),joint year+season fit,0.2953372829652263
+Winter,quadratic DOY (2 df),residual-then-average,0.3001919507599408
+Winter,quadratic DOY (2 df),joint year+season fit,0.40809859471879073
+Winter,cubic DOY (3 df),residual-then-average,0.2548383533206053
+Winter,cubic DOY (3 df),joint year+season fit,0.33601466169017113
+Spring,none (log both),residual-then-average,0.8285263504014564
+Spring,month FE,residual-then-average,0.3222903304234206
+Spring,month FE,joint year+season fit,0.37138761048044755
+Spring,linear DOY (1 df),residual-then-average,0.16015058148933592
+Spring,linear DOY (1 df),joint year+season fit,0.16318014645522866
+Spring,quadratic DOY (2 df),residual-then-average,-0.05164325950710001
+Spring,quadratic DOY (2 df),joint year+season fit,-0.09108675940386192
+Spring,cubic DOY (3 df),residual-then-average,-0.03834175971604081
+Spring,cubic DOY (3 df),joint year+season fit,-0.07025216950261129
+Summer,none (log both),residual-then-average,0.42193107878615793
+Summer,month FE,residual-then-average,0.45080287036286537
+Summer,month FE,joint year+season fit,0.49452758197192853
+Summer,linear DOY (1 df),residual-then-average,0.44549760257732235
+Summer,linear DOY (1 df),joint year+season fit,0.48353320110252945
+Summer,quadratic DOY (2 df),residual-then-average,0.464353782761898
+Summer,quadratic DOY (2 df),joint year+season fit,0.5005172078938559
+Summer,cubic DOY (3 df),residual-then-average,0.4453611209510148
+Summer,cubic DOY (3 df),joint year+season fit,0.48972611621609224
+Fall,none (log both),residual-then-average,-0.23910103114477205
+Fall,month FE,residual-then-average,-0.2612849832914486
+Fall,month FE,joint year+season fit,-0.1819408686972695
+Fall,linear DOY (1 df),residual-then-average,-0.2188008443843948
+Fall,linear DOY (1 df),joint year+season fit,-0.21310559977599566
+Fall,quadratic DOY (2 df),residual-then-average,-0.26904789451050026
+Fall,quadratic DOY (2 df),joint year+season fit,-0.2562021241690901
+Fall,cubic DOY (3 df),residual-then-average,-0.23556974318276025
+Fall,cubic DOY (3 df),joint year+season fit,-0.1967558774863786

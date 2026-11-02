@@ -242,7 +242,8 @@ def _panel(ax, x, y, color, marker, label, letter, xlabel, ylabel, stat_loc="upp
         ax.text(0.97, y0, f"r = {rc['r']:.2f}\n{ptxt}\nn = {rc['n']}", transform=ax.transAxes,
                 ha="right", va=va, fontsize=8.5)
     ax.axhline(0, color="0.7", lw=0.8)
-    ax.set_title(label, fontsize=10)
+    if label:
+        ax.set_title(label, fontsize=10)
     ax.set_xlabel(xlabel); ax.set_ylabel(ylabel)
     ax.text(0.02, 0.97, letter, transform=ax.transAxes, fontweight="bold", va="top")
     ax.grid(alpha=0.3)
@@ -251,12 +252,12 @@ def _panel(ax, x, y, color, marker, label, letter, xlabel, ylabel, stat_loc="upp
 def fig_bloom_zoop(sr):
     eb = pd.read_csv(ECOSPACE_BLOOM).set_index("Year")["Day of Year"]
     sb = pd.read_csv(ECOSIM_BLOOM).set_index("Year")["Day of Year"]
-    fig, ax = plt.subplots(1, 3, figsize=(12, 3.8), sharey=True)
-    _panel(ax[0], SAT.reindex(sr.index), sr.obs, C_OBS, "o", "Observed zooplankton\nvs satellite bloom day", "(a)",
+    fig, ax = plt.subplots(1, 3, figsize=(10, 3.3), sharey=True)
+    _panel(ax[0], SAT.reindex(sr.index), sr.obs, C_OBS, "o", "", "(a)",
            "Spring bloom day of year", "Spring crustacean biomass\n(log10 residual from seasonal curve)")
-    _panel(ax[1], eb.reindex(sr.index), sr.ecospace, C_MOD, "s", "SOGEM-LTL Ecospace\nvs own bloom day", "(b)",
+    _panel(ax[1], eb.reindex(sr.index), sr.ecospace, C_MOD, "s", "", "(b)",
            "Spring bloom day of year", "")
-    _panel(ax[2], sb.reindex(sr.index), sr.ecosim, C_SIM, "^", "SOGEM-LTL Ecosim\nvs own bloom day", "(c)",
+    _panel(ax[2], sb.reindex(sr.index), sr.ecosim, C_SIM, "^", "", "(c)",
            "Spring bloom day of year", "")
     fig.tight_layout()
     p = os.path.join(FIGS, f"ecospace_{cfg.ECOSPACE_SC}_zoop_spring_vs_bloomday.png")

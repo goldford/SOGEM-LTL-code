@@ -1,0 +1,68 @@
+========================================================================================== 
+1. TOW SELECTION
+Perry tows: 760 (1996-2018); regions: {'Central Strait of Georgia': 426, 'Northern Strait of Georgia': 334}
+Perry mesh (um): {236: 556, 253: 134, 250: 43, 202: 23, 335: 2, 330: 1, 200: 1}
+Perry nets: {'SCOR VNH': 383, 'Bongo VNH': 363, 'Ring VNH': 14}
+Matched tows (ours, 2000-2018, deep/complete filter): 716; regions: {'Central Strait of Georgia': 389, 'Northern Strait of Georgia': 327}
+Matched tows also in Perry's set: 716 / 716
+Matched tows NOT in Perry's set - region: {}
+   mesh: {}
+   net: {}
+   bottom depth (m) quantiles: [nan, nan, nan, nan, nan]
+   by year: {}
+Perry tows 2000-2018 NOT in our matched set: 0 / 716; in raw file at all: 0; region: {}
+   by year: {}
+Raw-file mesh sizes in matched tows: {236: 537, 253: 133, 250: 43, 335: 2, 200: 1}
+========================================================================================== 
+2. PER-TOW DRY BIOMASS: raw recomputation vs Perry (common tows)
+NB Perry's per-tow table (S2 sheet 1) is in mg m-3 (see its definitions sheet), not g m-2.
+n common tows 760; chaetognaths Perry/raw (mg m-3): min 1.0000, max 1.0000  -> identical source
+Total Perry/raw: median 1.023, IQR 1.000-1.149 (excess = euphausiid x3)
+========================================================================================== 
+3. EUPHAUSIIDS
+Euphausiid stage codes and share of raw euphausiid dry biomass: {'F': 0.632, 's2': 0.207, 'M': 0.07, 's1': 0.066, 's3': 0.025}
+  Daylight  n= 610  Perry/raw median 2.396 | Perry/(x3 daytime F+M) med 1.000, within 1%: 88% | Perry/(x3 daytime F+M+s3) med 1.000, within 1%: 100% | Perry/(x3 all F+M (day+night)) med 1.000, within 1%: 88%
+  Night     n= 125  Perry/raw median 1.000 | Perry/(x3 daytime F+M) med 1.000, within 1%: 100% | Perry/(x3 daytime F+M+s3) med 1.000, within 1%: 100% | Perry/(x3 all F+M (day+night)) med 0.348, within 1%: 7%
+Euphausiid share of total (Perry, mg m-3, with x3): 0.33  (paper: 26% of g m-2);  raw without x3: 0.18
+Matched tows: Daylight 600, Night 116, other {}
+========================================================================================== 
+4. CALANOID GROUPING (dry mass, all raw tows)
+ours           ZC4-CLG  ZC5-CSM  other
+Genus                                 
+Metridia          0.00    10.04    0.0
+Calanus           9.63     0.00    0.0
+Neocalanus        6.60     0.00    0.0
+Eucalanus         2.76     0.00    0.0
+Paraeuchaeta      0.00     1.62    0.0
+Pseudocalanus     0.00     1.60    0.0
+Gaetanus          0.00     1.01    0.0
+Chiridius         0.00     0.71    0.0
+Paracalanus       0.00     0.61    0.0
+Oithona           0.00     0.57    0.0
+Aetideus          0.00     0.43    0.0
+Microcalanus      0.00     0.25    0.0
+  (% of all raw dry biomass)
+Perry shares (% total):  {'CalCops.larg': 7.4, 'CalCops.med': 17.8, 'CalCops.smal': 2.6}
+Our ZC4/ZC5 shares (% total, dry, no euph x3): {'ZC4-CLG': 19.2, 'ZC5-CSM': 17.9, 'other': 0.0}
+Calanus species in ZC4-CLG (dry share of ZC4): {'*sp.': 0.009, 'marshallae': 0.224, 'marshallae+pacificus': 0.0, 'pacificus': 0.268}
+Poecilostomatoida (Oncaea, Corycaeidae etc., ~0.5-1 mm) in ZC4-CLG: 1.3% of ZC4 dry biomass
+========================================================================================== 
+5. ZF1-ICT and misc
+Chordata (non-appendicularian) by class, % of their dry biomass: {'Actinopterygii': 99.9, 'Ascidiacea': 0.1}
+========================================================================================== 
+6. PERRY'S PUBLISHED ANNUAL ANOMALY (TotBiom, S2 sheet 3)
+Perry TotBiom anomaly: {1996: 0.12, 1997: 0.1, 1998: 0.31, 1999: 0.27, 2000: 0.19, 2001: 0.11, 2002: 0.05, 2003: -0.1, 2004: -0.18, 2005: -0.26, 2006: -0.09, 2007: -0.15, 2008: -0.02, 2009: -0.04, 2010: 0.0, 2011: 0.24, 2012: 0.11, 2013: 0.01, 2014: -0.09, 2015: 0.08, 2016: 0.11, 2017: -0.01, 2018: 0.1}
+Reproducing Perry's TotBiom from their per-tow table (r, max abs diff):
+   mgm3  | Dec->same year | log of mean : r = 0.8452, max diff 0.2196
+   mgm3  | Dec->same year | mean of logs: r = 0.8909, max diff 0.1361
+   mgm3  | Dec->next year | log of mean : r = 0.8386, max diff 0.2233
+   mgm3  | Dec->next year | mean of logs: r = 0.8838, max diff 0.1556
+   gm2   | Dec->same year | log of mean : r = 0.9971, max diff 0.0439
+   gm2   | Dec->same year | mean of logs: r = 0.9220, max diff 0.1313
+   gm2   | Dec->next year | log of mean : r = 1.0000, max diff 0.0000
+   gm2   | Dec->next year | mean of logs: r = 0.9259, max diff 0.1275
+Perry TotBiom vs our obs crustaceans (Perry method, matched tows): r = +0.95 [+0.87,+0.98] n=19
+Perry TotBiom vs our obs GAM annual index:                      r = +0.76 [+0.46,+0.90] n=19
+Perry TotBiom vs model window annual index:                     r = -0.35 [-0.69,+0.13] n=19
+Perry TotBiom vs model tow-matched (Perry method):              r = -0.01 [-0.46,+0.44] n=19
+Our obs (Perry method) vs model tow-matched (Perry method):      r = +0.18 [-0.30,+0.59] n=19

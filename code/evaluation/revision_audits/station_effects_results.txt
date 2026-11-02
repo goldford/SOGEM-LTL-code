@@ -1,0 +1,10 @@
+log10(model cell depth / station bottom depth): median 0.00, IQR -0.01 to 0.01
+Total    n stations 15; SD of station effects obs 0.29, model 0.04; r(obs, model) +0.64 (p = 0.01)
+   r(station effect, bottom_depth): obs +0.68, model +0.19
+   r(station effect, tow_range): obs +0.72, model +0.22
+   r(station effect, lat): obs -0.00, model -0.44
+ZC1-EUP  n stations 15; SD of station effects obs 0.48, model 0.15; r(obs, model) +0.70 (p = 0.00)
+ZC2-AMP  n stations 15; SD of station effects obs 0.48, model 0.02; r(obs, model) +0.17 (p = 0.56)
+ZC3-DEC  n stations 15; SD of station effects obs 0.42, model 0.03; r(obs, model) +0.74 (p = 0.00)
+ZC4-CLG  n stations 15; SD of station effects obs 0.33, model 0.03; r(obs, model) +0.14 (p = 0.62)
+ZC5-CSM  n stations 15; SD of station effects obs 0.34, model 0.02; r(obs, model) +0.02 (p = 0.95)
